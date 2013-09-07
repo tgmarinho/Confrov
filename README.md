@@ -1,7 +1,7 @@
 Confrov
 =======
 
-Controle de Frotas Online
+Controle de Frotas de Veiculos - ONLINE
 
 Esse projeto é um projeto para contemplar a disciplina de Java Web na Pós Graduação de Engenharia de Software.
 
@@ -14,3 +14,9 @@ Tecnologias adotadas:
 - Tomcat 7
 - Weld
 - PrimeFaces
+- JSF 2.0
+- JPA 2.o
+- Hibernate 4.0
+- Eclipse Kleper
+- Plugin Maven maven2eclipse
+- Plugin Egit
