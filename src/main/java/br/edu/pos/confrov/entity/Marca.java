@@ -1,21 +1,28 @@
 package br.edu.pos.confrov.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity(name="tb_marca")
-@Table
-public class Marca {
+@Table(uniqueConstraints=@UniqueConstraint(columnNames="descricao"))
+public class Marca implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_marca")
+    @SequenceGenerator(name="seq_marca", sequenceName="seq_marca", allocationSize=10)
 	private Long id;
 	
-	@Column(name = "descricao")
+	@Column(unique=true, nullable=false) 
 	private String descricao;
 
 	public Long getId() {
@@ -63,11 +70,6 @@ public class Marca {
 			return false;
 		return true;
 	}
-	
-	
- 
-	
-	
 	
 	
 }
