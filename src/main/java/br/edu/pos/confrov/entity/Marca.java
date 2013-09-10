@@ -1,36 +1,38 @@
 package br.edu.pos.confrov.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity(name="tb_marca")
-@Table(uniqueConstraints=@UniqueConstraint(columnNames="descricao"))
+@Table(uniqueConstraints=@UniqueConstraint(columnNames="ma_descricao"))
 public class Marca implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_marca")
-    @SequenceGenerator(name="seq_marca", sequenceName="seq_marca", allocationSize=10)
+    @SequenceGenerator(name="seq_marca", sequenceName="seq_marca", initialValue=1, allocationSize=10)
 	private Long id;
 	
-	@Column(unique=true, nullable=false) 
+	@Column(name="ma_descricao",unique=true, nullable=false) 
 	private String descricao;
+	
+	@OneToMany(mappedBy="marca", fetch=FetchType.LAZY)
+	private Set<Modelo> modelo;
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getDescricao() {
@@ -70,6 +72,9 @@ public class Marca implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
+
+	public Set<Modelo> getModelo() {
+		return modelo;
+	}
+
 }
