@@ -9,7 +9,7 @@ public final class PersistenceFactory {
 	private static final EntityManagerFactory emf;
 	
 	static {
-		emf = Persistence.createEntityManagerFactory("confrov-pu");
+		emf = Persistence.createEntityManagerFactory("confrovpu");
 	}
 	
 	public static EntityManager getEntityManager() {
