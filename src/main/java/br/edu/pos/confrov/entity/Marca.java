@@ -22,7 +22,7 @@ import javax.persistence.UniqueConstraint;
 @NamedQueries({
     @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m"),
     @NamedQuery(name = "Marca.findByDescricao", query = "SELECT m FROM Marca m WHERE m.descricao = :descricao"),
-    @NamedQuery(name = "Marca.findById", query = "SELECT m FROM Marca m WHERE m.descricao = :id")})
+    @NamedQuery(name = "Marca.findById", query = "SELECT m FROM Marca m WHERE m.id = :id")})
 public class Marca implements Serializable{
 
 	private static final long serialVersionUID = 1L;

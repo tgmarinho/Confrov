@@ -24,7 +24,7 @@ public class ModeloTest {
 		Marca marca = new Marca();
 		marca.setDescricao("Toyota");
 		// Busca a marca a ser inserida
-		Marca marca2 = marcaService.findByDescricao(marca);
+		Marca marca2 = marcaService.findByDescricao("Toyota");
 		// Verifica se a Marca desse modelo existe no banco de dados
 		Assert.assertEquals("Toyota", marca2.getDescricao());
 		if(marca2!=null){
@@ -33,11 +33,13 @@ public class ModeloTest {
 		
 		// Persiste no Banco
 		IModeloService modeloService = new ModeloServiceImpl();
-		Modelo modelo2 = modeloService.criaModelo(modelo);
+//		Modelo modelo2 = modeloService.criaModelo(modelo);
+		Modelo m3 = modeloService.findByDescricao("Corolla");
 
 		// faz a verificação
-//		Assert.assertEquals("Toyota", m2.getDescricao());
+		Assert.assertEquals("Corolla", m3.getDescricao());
 
 	}
+	
 
 }

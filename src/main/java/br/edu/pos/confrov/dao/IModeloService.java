@@ -6,6 +6,6 @@ public interface IModeloService {
 
 	public Modelo criaModelo(Modelo marca);
 
-	public Modelo findByDescricao(Modelo modelo);
+	public Modelo findByDescricao(String descricao);
 
 }

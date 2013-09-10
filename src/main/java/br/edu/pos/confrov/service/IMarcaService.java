@@ -6,5 +6,5 @@ public interface IMarcaService {
 
 	public Marca criaMarca(Marca marca);
 	
-	public Marca findByDescricao(Marca marca);
+	public Marca findByDescricao(String descricao);
 }

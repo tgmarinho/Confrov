@@ -27,11 +27,12 @@ public class MarcaServiceImpl implements IMarcaService {
 	}
 
 
-	public Marca findByDescricao(Marca marca){
+	public Marca findByDescricao(String descricao){
 		// open transaction  
 		Dba dba = new Dba();
+		Marca marca;
 		try{
-			marca = marcaDAO.findByDescricao(marca);
+			marca = marcaDAO.findByDescricao(descricao);
 		} finally {
 			dba.closeEm();
 		}
