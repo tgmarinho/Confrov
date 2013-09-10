@@ -18,17 +18,16 @@ public class MarcaDAOImpl implements IMarcaDAO {
 		return marca;  
 	}  
 
-	public Marca findByDescricao(Marca marca, Dba dba){
+	public Marca findByDescricao(Marca marca){
+
+		Dba dba = new Dba(true);
 
 		try{
-			return (Marca) dba.getActiveEm().createQuery("from Marca ma order by ma.descricao").getSingleResult();
+			return (Marca) dba.getActiveEm().createNamedQuery("Marca.findByDescricao").setParameter("descricao", marca.getDescricao()).getSingleResult();
 		} finally{
 			dba.closeEm();
 		}
 
-
 	}
-
-
 
 }

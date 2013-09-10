@@ -9,20 +9,26 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-@Entity(name="tb_marca")
-@Table(uniqueConstraints=@UniqueConstraint(columnNames="ma_descricao"))
+@Entity
+@SequenceGenerator(name="seq_marca", sequenceName="seq_marca", initialValue=1, allocationSize=1)
+@Table(name="tb_marca", uniqueConstraints=@UniqueConstraint(columnNames="ma_descricao"))
+@NamedQueries({
+    @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m"),
+    @NamedQuery(name = "Marca.findByDescricao", query = "SELECT m FROM Marca m WHERE m.descricao = :descricao"),
+    @NamedQuery(name = "Marca.findById", query = "SELECT m FROM Marca m WHERE m.descricao = :id")})
 public class Marca implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_marca")
-    @SequenceGenerator(name="seq_marca", sequenceName="seq_marca", initialValue=1, allocationSize=10)
+	@GeneratedValue(generator="seq_marca", strategy=GenerationType.AUTO)
 	private Long id;
 	
 	@Column(name="ma_descricao",unique=true, nullable=false) 

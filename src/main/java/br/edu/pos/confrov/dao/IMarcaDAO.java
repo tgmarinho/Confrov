@@ -7,4 +7,6 @@ public interface IMarcaDAO {
 
 	public Marca criaMarca(Marca marca, Dba dba);
 	
+	public Marca findByDescricao(Marca marca);
+	
 }

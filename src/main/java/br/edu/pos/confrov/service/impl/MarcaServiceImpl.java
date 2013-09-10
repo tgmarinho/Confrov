@@ -9,7 +9,7 @@ import br.edu.pos.confrov.service.IMarcaService;
 public class MarcaServiceImpl implements IMarcaService {
 
 	IMarcaDAO marcaDAO = new MarcaDAOImpl();
-	
+
 	@Override
 	public Marca criaMarca(Marca marca) {
 
@@ -20,6 +20,19 @@ public class MarcaServiceImpl implements IMarcaService {
 			marca = marcaDAO.criaMarca(marca, dba);
 		} finally {
 			// 100% sure that the transaction and entity manager will be closed
+			dba.closeEm();
+		}
+		return marca;
+
+	}
+
+
+	public Marca findByDescricao(Marca marca){
+		// open transaction  
+		Dba dba = new Dba();
+		try{
+			marca = marcaDAO.findByDescricao(marca);
+		} finally {
 			dba.closeEm();
 		}
 		return marca;
