@@ -89,19 +89,21 @@
 			<version>2.1.7</version>
 		</dependency>
 
+
+		<!-- Primefaces Resources -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>3.2</version>
+			<version>3.5</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
-			<artifactId>sam</artifactId>
-			<version>1.0.3</version>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.10</version>
 		</dependency>
 
-		
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
