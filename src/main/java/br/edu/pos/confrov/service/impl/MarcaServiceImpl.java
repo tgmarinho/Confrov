@@ -1,7 +1,6 @@
 package br.edu.pos.confrov.service.impl;
 
 import br.edu.pos.confrov.dao.IMarcaDAO;
-import br.edu.pos.confrov.dao.impl.MarcaDAOImpl;
 import br.edu.pos.confrov.entity.Marca;
 import br.edu.pos.confrov.persistence.Dba;
 import br.edu.pos.confrov.service.IMarcaService;

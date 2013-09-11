@@ -1,8 +1,8 @@
 package br.edu.pos.confrov.dao.impl;
 
-import br.edu.pos.confrov.dao.IModeloService;
 import br.edu.pos.confrov.entity.Modelo;
 import br.edu.pos.confrov.persistence.Dba;
+import br.edu.pos.confrov.service.IModeloService;
 
 public class ModeloServiceImpl implements IModeloService {
 

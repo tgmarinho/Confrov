@@ -1,6 +1,7 @@
 package br.edu.pos.confrov.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,28 +17,22 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@SequenceGenerator(name="seq_modelo", sequenceName="seq_modelo", initialValue=1, allocationSize=1)
-@Table(name="tb_modelo", uniqueConstraints=@UniqueConstraint(columnNames="mo_descricao"))
+@SequenceGenerator(name="seq_categoria", sequenceName="seq_categoria", initialValue=1, allocationSize=1)
+@Table(name="tb_categoria", uniqueConstraints=@UniqueConstraint(columnNames="ca_descricao"))
 @NamedQueries({
-    @NamedQuery(name = "Modelo.findAll", query = "SELECT m FROM Modelo m"),
-    @NamedQuery(name = "Modelo.findByDescricao", query = "SELECT m FROM Modelo m WHERE m.descricao = :descricao"),
-    @NamedQuery(name = "Modelo.findById", query = "SELECT m FROM Modelo m WHERE m.id = :id")})
-public class Modelo implements Serializable{
+    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c"),
+    @NamedQuery(name = "Categoria.findByDescricao", query = "SELECT c FROM Categoria c WHERE c.descricao = :descricao"),
+    @NamedQuery(name = "Categoria.findById", query = "SELECT c FROM Categoria c WHERE c.id = :id")})
+public class Categoria implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator="seq_modelo", strategy=GenerationType.AUTO)
+	@GeneratedValue(generator="seq_categoria", strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name="mo_descricao")
+	@Column(name="ca_descricao",unique=true, nullable=false) 
 	private String descricao;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Marca marca;
-
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Categoria categoria;
 	
 	public Long getId() {
 		return id;
@@ -51,22 +46,6 @@ public class Modelo implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public Marca getMarca() {
-		return marca;
-	}
-
-	public void setMarca(Marca marca) {
-		this.marca = marca;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
 	@Override
 	public String toString() {
 		return descricao;
@@ -76,8 +55,6 @@ public class Modelo implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((categoria == null) ? 0 : categoria.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -90,12 +67,7 @@ public class Modelo implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Modelo other = (Modelo) obj;
-		if (categoria == null) {
-			if (other.categoria != null)
-				return false;
-		} else if (!categoria.equals(other.categoria))
-			return false;
+		Categoria other = (Categoria) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -103,6 +75,5 @@ public class Modelo implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
+
 }

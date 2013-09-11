@@ -1,4 +1,4 @@
-package br.edu.pos.confrov.dao;
+package br.edu.pos.confrov.service;
 
 import br.edu.pos.confrov.entity.Modelo;
 

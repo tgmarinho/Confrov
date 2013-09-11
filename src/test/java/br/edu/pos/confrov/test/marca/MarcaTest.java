@@ -21,7 +21,6 @@ public class MarcaTest {
 		
 
 		// Cria a Marca
-		
 		Marca m = new Marca();
 		m.setDescricao("Toyota");
 
