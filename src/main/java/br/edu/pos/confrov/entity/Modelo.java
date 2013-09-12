@@ -33,10 +33,10 @@ public class Modelo implements Serializable{
 	@Column(name="mo_descricao")
 	private String descricao;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Marca marca;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Categoria categoria;
 	
 	public Long getId() {

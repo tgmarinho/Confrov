@@ -34,7 +34,7 @@ public class Marca implements Serializable{
 	@Column(name="ma_descricao",unique=true, nullable=false) 
 	private String descricao;
 	
-	@OneToMany(mappedBy="marca", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="marca", fetch=FetchType.EAGER)
 	private Set<Modelo> modelo;
 
 	public Long getId() {

@@ -42,10 +42,9 @@ Thumbs.db
 bin/
 .settings/
 .settings/*
-.classpath
+
 
 # ignore all target directories
 target/
-.*
-.*~
+
 

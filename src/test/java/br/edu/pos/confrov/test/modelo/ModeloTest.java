@@ -1,5 +1,6 @@
 package br.edu.pos.confrov.test.modelo;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import br.edu.pos.confrov.entity.Categoria;
@@ -62,12 +63,15 @@ public class ModeloTest {
 		modelo.setCategoria(categoria);
 		modelo.setMarca(marca);
 		
-		modeloService.criaModelo(modelo);
+//		modeloService.criaModelo(modelo);
 		
 		
 		// faz as assertividades
 		
 		Modelo modeloSalvo = modeloService.findByDescricao("Etios");
+		System.out.println(modeloSalvo.getDescricao());
+		System.out.println(modeloSalvo.getCategoria());
+		System.out.println(modeloSalvo.getMarca());
 		
 		
 
