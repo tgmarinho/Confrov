@@ -4,8 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import br.edu.pos.confrov.dao.ICategoriaDAO;
 import br.edu.pos.confrov.entity.Categoria;
+import br.edu.pos.confrov.service.ICategoriaService;
+import br.edu.pos.confrov.service.impl.CategoriaServiceImpl;
 
 public class CategoriaTest {
 
@@ -14,14 +15,17 @@ public class CategoriaTest {
 		
 	//Cria a Categoria
 	Categoria categoria = new Categoria();
-	categoria.setDescricao("Passeio");
+	categoria.setDescricao("Rolé");
 	
-	ICategoriaDAO categoriaService = new CategoriaServiceImpl();
-	Categoria categoriaPersist = categoriaService.createCategoria(categoria);
+	ICategoriaService categoriaService = new CategoriaServiceImpl();
+	Categoria categoriaSalva = categoriaService.criaCategoria(categoria);
 	
-	assertEquals("Passeio", categoriaPersist.getDescricao());
+	assertEquals("Rolé", categoriaSalva.getDescricao());
 		
-		
+	Categoria c2 = categoriaService.findByDescricao("Passeio");
+	assertEquals("Passeio", c2.getDescricao());
+	
+	
 	}
 
 }

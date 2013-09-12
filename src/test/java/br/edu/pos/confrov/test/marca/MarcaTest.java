@@ -10,21 +10,13 @@ import br.edu.pos.confrov.service.impl.MarcaServiceImpl;
 
 public class MarcaTest {
 
-	@Before
-	public void setUp() throws Exception {
-	
-	
-	}
-
 	@Test
-	public void test()  {
-		
+	public void cadastraMarcatest()  {
 
 		// Cria a Marca
 		Marca m = new Marca();
 		m.setDescricao("Toyota");
 
-		
 		// Persiste no Banco
 		IMarcaService marcaService = new MarcaServiceImpl();
 		Marca m2 = marcaService.criaMarca(m);
@@ -32,7 +24,8 @@ public class MarcaTest {
 		// faz a verificação
 		Assert.assertEquals("Toyota", m2.getDescricao());
 		
-		
 	}
+	
+
 
 }

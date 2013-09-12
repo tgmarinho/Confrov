@@ -1,44 +1,79 @@
 package br.edu.pos.confrov.test.modelo;
 
-import org.junit.Assert;
 import org.junit.Test;
 
+import br.edu.pos.confrov.entity.Categoria;
 import br.edu.pos.confrov.entity.Marca;
 import br.edu.pos.confrov.entity.Modelo;
+import br.edu.pos.confrov.service.ICategoriaService;
 import br.edu.pos.confrov.service.IMarcaService;
 import br.edu.pos.confrov.service.IModeloService;
+import br.edu.pos.confrov.service.impl.CategoriaServiceImpl;
 import br.edu.pos.confrov.service.impl.MarcaServiceImpl;
+import br.edu.pos.confrov.service.impl.ModeloServiceImpl;
 
 public class ModeloTest {
 
-	@Test
-	public void test() {
+	IMarcaService marcaService = new MarcaServiceImpl();
+	IModeloService modeloService = new ModeloServiceImpl();
+	ICategoriaService categoriaService = new CategoriaServiceImpl();
 
-		IMarcaService marcaService = new MarcaServiceImpl();
+
+	@Test
+	public void cadastraModeloTest() {
+
+//		// Cria o Modelo
+//		Modelo modelo = new Modelo();
+//		modelo.setDescricao("Corolla");
+//		// parametros de busca
+//		Marca marca = new Marca();
+//		marca.setDescricao("Toyota");
+//		// Busca a marca a ser inserida
+//		Marca marca2 = marcaService.findByDescricao("Toyota");
+//		// Verifica se a Marca desse modelo existe no banco de dados
+//		Assert.assertEquals("Toyota", marca2.getDescricao());
+//		if(marca2!=null){
+//			modelo.setMarca(marca2);
+//		}
+
+		// Persiste no Banco
+		//		IModeloService modeloService = new ModeloServiceImpl();
+		//		Modelo modelo2 = modeloService.criaModelo(modelo);
+		//		Modelo m3 = modeloService.findByDescricao("Corolla");
+
+		// faz a verificação
+		//		Assert.assertEquals("Corolla", m3.getDescricao());
+
+	}
+
+	@Test
+	public void cadastraModeloComCategoriaTest(){
+
+		// Busca a marca a ser inserida
+		Marca marca = marcaService.findByDescricao("Toyota");
+		
+		// Busca a categoria do carro
+		Categoria categoria = categoriaService.findByDescricao("Passeio");
 		
 		// Cria o Modelo
 		Modelo modelo = new Modelo();
-		modelo.setDescricao("Corolla");
-		// parametros de busca
-		Marca marca = new Marca();
-		marca.setDescricao("Toyota");
-		// Busca a marca a ser inserida
-		Marca marca2 = marcaService.findByDescricao("Toyota");
-		// Verifica se a Marca desse modelo existe no banco de dados
-		Assert.assertEquals("Toyota", marca2.getDescricao());
-		if(marca2!=null){
-			modelo.setMarca(marca2);
-		}
+		modelo.setDescricao("Etios");
+		// vincula os relacionamentos com Marca e Categoria
+		modelo.setCategoria(categoria);
+		modelo.setMarca(marca);
 		
-		// Persiste no Banco
-//		IModeloService modeloService = new ModeloServiceImpl();
-//		Modelo modelo2 = modeloService.criaModelo(modelo);
-//		Modelo m3 = modeloService.findByDescricao("Corolla");
+		modeloService.criaModelo(modelo);
+		
+		
+		// faz as assertividades
+		
+		Modelo modeloSalvo = modeloService.findByDescricao("Etios");
+		
+		
 
-		// faz a verificação
-//		Assert.assertEquals("Corolla", m3.getDescricao());
+
 
 	}
-	
+
 
 }
