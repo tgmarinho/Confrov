@@ -2,6 +2,7 @@ package br.edu.pos.confrov.dao.impl;
 
 import javax.persistence.EntityManager;
 
+import br.edu.pos.confrov.dao.IModeloDAO;
 import br.edu.pos.confrov.entity.Modelo;
 import br.edu.pos.confrov.persistence.Dba;
 

@@ -1,4 +1,4 @@
-package br.edu.pos.confrov.dao.impl;
+package br.edu.pos.confrov.dao;
 
 import br.edu.pos.confrov.entity.Modelo;
 import br.edu.pos.confrov.persistence.Dba;

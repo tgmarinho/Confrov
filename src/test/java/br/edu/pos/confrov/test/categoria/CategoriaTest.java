@@ -16,10 +16,10 @@ public class CategoriaTest {
 	Categoria categoria = new Categoria();
 	categoria.setDescricao("Passeio");
 	
-//	ICategoriaDAO categoriaService = new CategoriaServiceImpl();
-//	Categoria categoriaPersist = categoriaService.createCategoria(categoria);
+	ICategoriaDAO categoriaService = new CategoriaServiceImpl();
+	Categoria categoriaPersist = categoriaService.createCategoria(categoria);
 	
-//	assertEquals("Passeio", categoriaPersist.getDescricao());
+	assertEquals("Passeio", categoriaPersist.getDescricao());
 		
 		
 	}
