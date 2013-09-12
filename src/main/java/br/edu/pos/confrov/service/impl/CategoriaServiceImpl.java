@@ -1,5 +1,7 @@
 package br.edu.pos.confrov.service.impl;
 
+import java.util.List;
+
 import br.edu.pos.confrov.dao.ICategoriaDAO;
 import br.edu.pos.confrov.dao.impl.CategoriaDAOImpl;
 import br.edu.pos.confrov.entity.Categoria;
@@ -29,7 +31,7 @@ public class CategoriaServiceImpl implements ICategoriaService {
 	@Override
 	public Categoria findByDescricao(String descricao) {
 
-		Dba dba = new Dba();
+		Dba dba = new Dba(); // DBA abra e fecha e faz outroas coisas de conexao com o banco de dados
 		Categoria categoria;
 		try{
 			categoria = categoriaDAO.findByDescricao(descricao);
@@ -37,6 +39,21 @@ public class CategoriaServiceImpl implements ICategoriaService {
 			dba.closeEm();
 		}
 		return categoria;
+	}
+
+	@Override
+	public List<Categoria> findByAll() {
+	
+		Dba dba = new Dba();
+		List<Categoria> categorias;
+		try {
+			categorias = categoriaDAO.findByAll();
+		} finally {
+			dba.closeEm();
+		}
+		
+		return categorias;
+		
 	}
 
 }
