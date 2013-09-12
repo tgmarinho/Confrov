@@ -20,8 +20,11 @@ Tecnologias adotadas:
 - Eclipse Kleper
 - Plugin Maven maven2eclipse
 - Plugin Egit
+<<<<<<< HEAD
 
 
 
 Artigos -> helpers
 http://entjavastuff.blogspot.com.br/2012/03/jsf-21-and-jpa-2-on-tomcat-7.html
+=======
+>>>>>>> f4b0321f3e9853201eeed1ca9433c3f719051990
