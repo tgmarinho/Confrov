@@ -40,11 +40,10 @@ Thumbs.db
 # ignore all bin directories
 # matches "bin" in any subfolder
 bin/
-.settings/
-.settings/*
+.classpath
 
 
 # ignore all target directories
 target/
 
-
+.gitignore~
