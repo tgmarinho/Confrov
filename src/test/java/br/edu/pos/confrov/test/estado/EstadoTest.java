@@ -14,20 +14,20 @@ public class EstadoTest {
 IEstadoService estadoService = new EstadoServiceImpl();
 	
 	@Test
-	public void cadastraCategoriatest() { // nesse teste passou
+	public void cadastraEstadotest() { // nesse teste passou
 		
 	Estado estado = new Estado();
-	estado.setNome("Mato Grosso" );
-	estado.setSigla("MT");
+	estado.setNome("Goiás" );
+	estado.setSigla("GO");
 	
 	Estado estadoSalva = estadoService.criaEstado(estado);
-	assertEquals("Mato Grosso ", estadoSalva.getNome());
-	assertEquals("MT",estadoSalva.getSigla());
+	assertEquals("Goiás", estadoSalva.getNome());
+	assertEquals("GO",estadoSalva.getSigla());
 		
 	}
 	
 	@Test
-	public void buscaTodasCategorias(){ 
+	public void buscaTodosEstados(){ 
 		
 		List<Estado> estados = estadoService.findByAll();
 		
