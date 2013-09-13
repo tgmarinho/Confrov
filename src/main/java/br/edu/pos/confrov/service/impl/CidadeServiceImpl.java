@@ -6,6 +6,7 @@ import br.edu.pos.confrov.dao.ICidadeDAO;
 import br.edu.pos.confrov.dao.impl.CidadeDAOImpl;
 import br.edu.pos.confrov.entity.Categoria;
 import br.edu.pos.confrov.entity.Cidade;
+import br.edu.pos.confrov.entity.Estado;
 import br.edu.pos.confrov.persistence.Dba;
 import br.edu.pos.confrov.service.ICidadeService;
 
@@ -38,18 +39,7 @@ public class CidadeServiceImpl implements ICidadeService{
 		}
 		return cidade;
 	}
-	
-	public Cidade findByEstado(int estado) {
-		// open transaction  
-		Dba dba = new Dba();
-		Cidade	 cidade;
-		try{
-			cidade = cidadeDAO.findbyEstado(estado);
-		} finally {
-			dba.closeEm();
-		}
-		return cidade;
-	}
+	@Override
 	public List<Cidade> findByAll() {
 		
 		Dba dba = new Dba();
@@ -63,5 +53,19 @@ public class CidadeServiceImpl implements ICidadeService{
 		return cidades;
 		
 	}
+
+	@Override
+	public List<Cidade> findbyEstado(int estado) {
+		// open transaction  
+				Dba dba = new Dba();
+				List<Cidade> cidades;
+				try{
+					cidades =  cidadeDAO.findbyEstado(estado);
+				} finally {
+					dba.closeEm();
+				}
+				return cidades;
+	}
+
 
 }

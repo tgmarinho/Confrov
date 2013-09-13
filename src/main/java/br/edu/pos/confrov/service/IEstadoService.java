@@ -12,5 +12,7 @@ public interface IEstadoService {
 	public Estado findByDescricao(String nome);
 
 	public List<Estado> findByAll();
+	
+	public Estado findById(int Id);
 
 }

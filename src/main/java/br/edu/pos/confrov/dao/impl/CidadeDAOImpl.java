@@ -33,11 +33,11 @@ public class CidadeDAOImpl  implements ICidadeDAO {
 	}
 
 	@Override
-	public Cidade findbyEstado(int estado) {
+	public List<Cidade> findbyEstado(int estado) {
 		Dba dba = new Dba(true);
 
 		try{
-			return (Cidade) dba.getActiveEm().createNamedQuery("Cidade.findbyEstado").setParameter("estadoid", estado).getSingleResult();
+			return dba.getActiveEm().createNamedQuery("Cidade.findbyEstado").setParameter("estado", estado).getResultList();
 		} finally{
 			dba.closeEm();
 		}

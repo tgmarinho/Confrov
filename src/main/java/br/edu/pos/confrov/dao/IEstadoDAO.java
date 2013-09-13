@@ -11,6 +11,8 @@ public interface IEstadoDAO {
 	public Estado findByDescricao(String descricao);
 
 	public List<Estado> findByAll();
+	
+	public Estado findById(int Id);
 
 
 }

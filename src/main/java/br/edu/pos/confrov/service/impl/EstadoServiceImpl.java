@@ -51,5 +51,14 @@ public class EstadoServiceImpl implements IEstadoService {
 		return estados;
 
 	}
+	
+	public Estado findById (int Id){
+		Dba dba = new Dba(true);
+		try{
+			return (Estado) dba.getActiveEm().createNamedQuery("Estado.findById").setParameter("Id", Id).getSingleResult();
+		}finally{
+			dba.closeEm();
+		}
+	}
 
 }

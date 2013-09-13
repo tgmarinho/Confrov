@@ -40,5 +40,14 @@ public class EstadoDAOImpl implements IEstadoDAO {
 			dba.closeEm();
 		}
 	}
+	
+	public Estado findById (int Id){
+		Dba dba = new Dba(true);
+		try{
+			return (Estado) dba.getActiveEm().createNamedQuery("Estado.findById").setParameter("Id", Id).getSingleResult();
+		}finally{
+			dba.closeEm();
+		}
+	}
 
 }

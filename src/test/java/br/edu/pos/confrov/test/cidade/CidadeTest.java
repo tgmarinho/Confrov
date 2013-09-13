@@ -17,37 +17,39 @@ public class CidadeTest {
 	IEstadoService estadoService= new EstadoServiceImpl();
 	Cidade cidade= new Cidade();
 	
-	@Test
+	/*@Test
 	public void cadastraCidadeTest() {
 		
-		/*Cidade cidade = new Cidade();
+		Cidade cidade = new Cidade();
 		cidade.setNome("Goiania" );
 		cidade.setEstado(estadoService.findByDescricao("Goiás"));
 		
 		Cidade cidadeSalva = cidadeService.criaCidade(cidade);
-		assertEquals("Goiania", cidadeSalva.getNome());*/
+		assertEquals("Goiania", cidadeSalva.getNome());
 		
-	}
+	}*/
 		
-	/*@Test	
-	public void cadastraCidadeEstadoTest(){
-
-		    Estado estado = estadoService.findByDescricao("Goiás");
 	
-			this.cidade = new Cidade();
-			cidade.setNome("Goiania");
-			cidade.setEstado(estado);
-			
-			
-			Cidade cidadeSalvo = cidadeService.findByNome("Goiania");
-			System.out.println(cidadeSalvo.getNome());
-			System.out.println(cidadeSalvo.getEstado());
-					
-		}
+	
 	@Test	
 	public void buscaTodasCidades(){ 
 			
 			List<Cidade> cidades = cidadeService.findByAll();
+			
+			for (Cidade cidade : cidades) {
+				System.out.println(cidade.getNome()+ '-'+cidade.getEstado());
+				
+			}
+			
+			
+			
+		}	
+
+	/*@Test	
+	public void buscaPorEstado(){ 
+	
+			
+			List<Cidade> cidades =   cidadeService.findbyEstado(1);
 			
 			for (Cidade cidade : cidades) {
 				System.out.println(cidade.getNome());
