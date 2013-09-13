@@ -3,24 +3,23 @@ package br.edu.pos.confrov.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
 @SequenceGenerator(name="seq_veiculo", sequenceName="seq_veiculo", initialValue=1, allocationSize=1)
-@Table(name="tb_veiculo", uniqueConstraints=@UniqueConstraint(columnNames="ca_descricao"))
+@Table(name="tb_veiculo")
 @NamedQueries({
-    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c"),
-    @NamedQuery(name = "Categoria.findByDescricao", query = "SELECT c FROM Categoria c WHERE c.descricao = :descricao"),
-    @NamedQuery(name = "Categoria.findById", query = "SELECT c FROM Categoria c WHERE c.id = :id")})
+    @NamedQuery(name = "Veiculo.findAll", query = "SELECT v FROM Veiculo v"),
+    @NamedQuery(name = "Veiculo.findById", query = "SELECT v FROM Veiculo v WHERE v.id = :id")})
 public class Veiculo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	
+	@Id
 	private Long id;
 	
 	private String placa;
