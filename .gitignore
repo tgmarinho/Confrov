@@ -45,5 +45,5 @@ bin/
 
 # ignore all target directories
 target/
-
+.faces-config.xml.jsfdia
 .gitignore~

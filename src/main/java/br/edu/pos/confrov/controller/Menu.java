@@ -7,7 +7,8 @@ public class Menu {
 
 	
 	public String categoriaList(){
-		return "categoriaList.xhtml";
+		System.out.println("teste");
+		return "categoriaList";
 	}
 	
 }
