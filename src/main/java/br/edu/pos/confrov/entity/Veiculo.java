@@ -2,6 +2,7 @@ package br.edu.pos.confrov.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -22,12 +23,16 @@ public class Veiculo implements Serializable {
 	@Id
 	private Long id;
 	
+	@Column(name="ve_placa")
 	private String placa;
 	
+	@Column(name="ve_ano_fabricacao")
 	private Integer anoFabricacao;
 	
+	@Column(name="ve_ano_modelo")
 	private Integer anoModelo;
 	
+	@Column(name="ve_cor")
 	private String cor;
 	
 	private Marca marca;
@@ -36,6 +41,7 @@ public class Veiculo implements Serializable {
 	
 	private Categoria categoria;
 	
+	@Column(name="ve_valor_locacao")
 	private Double valorLocacao;
 
 	public String getPlaca() {
