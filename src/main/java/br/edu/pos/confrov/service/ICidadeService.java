@@ -13,6 +13,6 @@ public interface ICidadeService {
 
 	public List<Cidade> findByAll();
 		
-	List<Cidade> findbyEstado(int estado);
+	List<Cidade> findbyEstado(Long estado);
 
 }

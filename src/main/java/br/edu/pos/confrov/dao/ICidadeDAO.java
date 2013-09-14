@@ -12,7 +12,7 @@ public interface ICidadeDAO {
 
 	public Cidade findByNome(String nome);
 	
-	public List<Cidade> findbyEstado (int estado);
+	public List<Cidade> findbyEstado (Long estado);
 	
 	public List<Cidade> findByAll();
 

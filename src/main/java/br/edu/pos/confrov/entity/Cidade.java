@@ -21,7 +21,7 @@ import javax.persistence.UniqueConstraint;
 @NamedQueries({
 		@NamedQuery(name = "Cidade.findAll", query = "SELECT c FROM Cidade c"),
 		@NamedQuery(name = "Cidade.findByNome", query = "SELECT c FROM Cidade c WHERE c.nome = :nome"),
-		@NamedQuery(name = "Cidade.findbyEstado", query = "SELECT c FROM Cidade c WHERE c.estado = :estado"),
+		@NamedQuery(name = "Cidade.findByEstado", query = "SELECT c FROM Cidade c WHERE c.estado.id = :estado"),
 		@NamedQuery(name = "Cidade.findById", query = "SELECT c FROM Cidade c WHERE c.id = :id") })
 public class Cidade implements Serializable{
 	

@@ -55,7 +55,7 @@ public class CidadeServiceImpl implements ICidadeService{
 	}
 
 	@Override
-	public List<Cidade> findbyEstado(int estado) {
+	public List<Cidade> findbyEstado(Long estado) {
 		// open transaction  
 				Dba dba = new Dba();
 				List<Cidade> cidades;
