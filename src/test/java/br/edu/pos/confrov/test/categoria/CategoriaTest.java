@@ -27,7 +27,7 @@ public class CategoriaTest {
 //	Categoria c2 = categoriaService.findByDescricao("Passeio");
 //	assertEquals("Passeio", c2.getDescricao());
 	
-	// testes ok
+	// testes ok   ffgd
 	
 	// blz vc implemtou algo q passou nos testes, agora falta vc commitar, ou seja mandar para o git hub
 	// bou mostrar como faz
