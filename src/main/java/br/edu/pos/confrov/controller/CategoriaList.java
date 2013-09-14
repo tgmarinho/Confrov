@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Inject;
+import javax.faces.context.FacesContext;
 
 import br.edu.pos.confrov.entity.Categoria;
 import br.edu.pos.confrov.service.ICategoriaService;
@@ -19,7 +20,7 @@ public class CategoriaList implements Serializable {
 //	private static final Logger log = Logger.getLogger(CategoriaList.class);
 	
 	private static final long serialVersionUID = 1L;
-	@Inject
+
 	private Categoria categoria;
 	private List<Categoria> categorias;
 	
@@ -28,14 +29,20 @@ public class CategoriaList implements Serializable {
 	@PostConstruct
 	public void init(){
 //		categorias = categoriaService.findByAll();
+		categoria = new Categoria();
 	}
 	
 	public String salvar(){
 		
 		Categoria categoriaPeristida = categoriaService.findByDescricao(categoria.getDescricao());
-		if(categoriaPeristida !=null){
+		if(categoriaPeristida == null){
 			categoriaService.criaCategoria(categoria);
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Categoria Salva", "Categoria Salva!!!")); 
+		}else {
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Já existe uma categoria conm essa descrição", "PrimeFaces rocks!"));  
 		}
+		
+		categoria = categoriaService.criaCategoria(categoria);
 		
 		return "categoriaList";
 		
