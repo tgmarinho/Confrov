@@ -1,11 +1,11 @@
 package br.edu.pos.confrov.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import br.edu.pos.confrov.entity.Cidade;
-import br.edu.pos.confrov.entity.Estado;
 
-public interface ICidadeService {
+public interface ICidadeService  extends Serializable{
 
 	public Cidade criaCidade(Cidade cidade);
 

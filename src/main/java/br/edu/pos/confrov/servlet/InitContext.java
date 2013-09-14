@@ -3,7 +3,6 @@ package br.edu.pos.confrov.servlet;
 import javax.servlet.http.HttpServlet;
 
 import br.edu.pos.confrov.persistence.Dba;
-import br.edu.pos.confrov.persistence.PersistenceFactory;
 
 /**
  * Servlet implementation class InitContext

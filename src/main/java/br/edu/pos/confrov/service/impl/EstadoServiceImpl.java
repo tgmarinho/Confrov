@@ -2,9 +2,7 @@ package br.edu.pos.confrov.service.impl;
 
 import java.util.List;
 
-import br.edu.pos.confrov.dao.ICategoriaDAO;
 import br.edu.pos.confrov.dao.IEstadoDAO;
-import br.edu.pos.confrov.dao.impl.CategoriaDAOImpl;
 import br.edu.pos.confrov.dao.impl.EstadoDAOImpl;
 import br.edu.pos.confrov.entity.Estado;
 import br.edu.pos.confrov.persistence.Dba;
@@ -12,7 +10,10 @@ import br.edu.pos.confrov.service.IEstadoService;
 
 public class EstadoServiceImpl implements IEstadoService {
 
+	private static final long serialVersionUID = 1L;
+	
 	IEstadoDAO estadoDAO = new EstadoDAOImpl();
+	
 	@Override
 	public Estado criaEstado(Estado estado) {
 		Dba dba = new Dba();

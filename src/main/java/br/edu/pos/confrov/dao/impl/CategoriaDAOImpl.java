@@ -10,6 +10,8 @@ import br.edu.pos.confrov.persistence.Dba;
 
 public class CategoriaDAOImpl implements ICategoriaDAO {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public Categoria criaCategoria(Categoria categoria, Dba dba) {
 		EntityManager em = dba.getActiveEm();  

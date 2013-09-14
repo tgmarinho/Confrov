@@ -1,12 +1,12 @@
 package br.edu.pos.confrov.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import br.edu.pos.confrov.entity.Cidade;
-import br.edu.pos.confrov.entity.Estado;
 import br.edu.pos.confrov.persistence.Dba;
 
-public interface ICidadeDAO {
+public interface ICidadeDAO extends Serializable {
 	
 	public Cidade criaCidade(Cidade cidade, Dba dba);
 

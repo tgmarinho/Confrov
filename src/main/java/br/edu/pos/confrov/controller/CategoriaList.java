@@ -1,27 +1,62 @@
 package br.edu.pos.confrov.controller;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
-import org.apache.log4j.Logger;
+import javax.inject.Inject;
 
 import br.edu.pos.confrov.entity.Categoria;
+import br.edu.pos.confrov.service.ICategoriaService;
+import br.edu.pos.confrov.service.impl.CategoriaServiceImpl;
 
-
-@ManagedBean(name="cateoriaList")
 @ViewScoped
-public class CategoriaList {
+@ManagedBean(name="categoria")
+public class CategoriaList implements Serializable {
 
-	private static final Logger log = Logger.getLogger(CategoriaList.class);
-
-	private Categoria categoria;
-
+//	private static final Logger log = Logger.getLogger(CategoriaList.class);
 	
-	public void salvar(){
+	private static final long serialVersionUID = 1L;
+	@Inject
+	private Categoria categoria;
+	private List<Categoria> categorias;
+	
+	ICategoriaService categoriaService = new CategoriaServiceImpl();
+	
+	@PostConstruct
+	public void init(){
+//		categorias = categoriaService.findByAll();
+	}
+	
+	public String salvar(){
 		
+		Categoria categoriaPeristida = categoriaService.findByDescricao(categoria.getDescricao());
+		if(categoriaPeristida !=null){
+			categoriaService.criaCategoria(categoria);
+		}
 		
+		return "categoriaList";
 		
-		
+	}
+
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 
 

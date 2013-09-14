@@ -8,6 +8,8 @@ import br.edu.pos.confrov.service.IModeloService;
 
 public class ModeloServiceImpl implements IModeloService {
 
+	private static final long serialVersionUID = 1L;
+	
 	private IModeloDAO modeloDAO = new ModeloDAOImpl();
 
 	@Override

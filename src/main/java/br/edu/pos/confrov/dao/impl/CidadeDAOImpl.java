@@ -6,12 +6,12 @@ import javax.persistence.EntityManager;
 
 import br.edu.pos.confrov.dao.ICidadeDAO;
 import br.edu.pos.confrov.entity.Cidade;
-import br.edu.pos.confrov.entity.Estado;
-import br.edu.pos.confrov.entity.Modelo;
 import br.edu.pos.confrov.persistence.Dba;
 
-public class CidadeDAOImpl  implements ICidadeDAO {
+public class CidadeDAOImpl implements ICidadeDAO {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	public Cidade criaCidade(Cidade cidade, Dba dba) {
 		EntityManager em = dba.getActiveEm();  
@@ -44,6 +44,7 @@ public class CidadeDAOImpl  implements ICidadeDAO {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Cidade> findByAll() {
 		Dba dba = new Dba(true);
 

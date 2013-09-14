@@ -8,6 +8,8 @@ import br.edu.pos.confrov.service.IMarcaService;
 
 public class MarcaServiceImpl implements IMarcaService {
 
+	private static final long serialVersionUID = 1L;
+	
 	IMarcaDAO marcaDAO = new MarcaDAOImpl();
 
 	@Override

@@ -10,6 +10,8 @@ import br.edu.pos.confrov.persistence.Dba;
 
 public class EstadoDAOImpl implements IEstadoDAO {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	public Estado criaEstado(Estado estado, Dba dba) {
 		EntityManager em = dba.getActiveEm();  
@@ -30,6 +32,7 @@ public class EstadoDAOImpl implements IEstadoDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Estado> findByAll() {
 		Dba dba = new Dba(true);

@@ -11,6 +11,8 @@ import br.edu.pos.confrov.service.ICategoriaService;
 public class CategoriaServiceImpl implements ICategoriaService {
 
 	
+	private static final long serialVersionUID = 1L;
+
 	ICategoriaDAO categoriaDAO = new CategoriaDAOImpl();
 	
 	@Override

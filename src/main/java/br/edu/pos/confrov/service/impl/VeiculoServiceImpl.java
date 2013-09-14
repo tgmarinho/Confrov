@@ -8,6 +8,8 @@ import br.edu.pos.confrov.service.IVeiculoService;
 
 public class VeiculoServiceImpl implements IVeiculoService {
 
+	private static final long serialVersionUID = 1L;
+	
 	IVeiculoDAO veiculoDAO = new VeiculoDAOImpl();
 
 	@Override

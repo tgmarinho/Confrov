@@ -12,10 +12,10 @@
 			<p:panel header="Categoria">
 				<h:panelGrid columns="2" cellpadding="5">
 					<h:outputText value="Descrição: " />
-					<p:inputMask value="#{categoria.descricao}" maxlength="30" />
+					<p:inputText value="#{categoria.categoria.descricao}" maxlength="30" />
 
 					<p:commandButton value="Reset" type="reset" />
-					<p:commandButton value="Salvar" update="display"
+					<p:commandButton value="Salvar" action="#{categoria.salvar}" update="display"
 						oncomplete="PF('dlg').show()" />
 
 				</h:panelGrid>
@@ -25,7 +25,7 @@
 				<h:panelGrid id="display" columns="2" cellpadding="5">
 
 					<h:outputText value="Descrição: " />
-					<h:outputText value="#{categoria.descricao}" />
+					<h:outputText value="#{categoria.categoria.descricao}" />
 
 				</h:panelGrid>
 			</p:dialog>

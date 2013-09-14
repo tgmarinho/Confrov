@@ -8,6 +8,8 @@ import br.edu.pos.confrov.persistence.Dba;
 
 public class MarcaDAOImpl implements IMarcaDAO {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	public Marca criaMarca(Marca marca, Dba dba) {
 

@@ -8,6 +8,8 @@ import br.edu.pos.confrov.persistence.Dba;
 
 public class VeiculoDAOImpl implements IVeiculoDAO {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	public Veiculo criaModelo(Veiculo veiculo, Dba dba) {
 

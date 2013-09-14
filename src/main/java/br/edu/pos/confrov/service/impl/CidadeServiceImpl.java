@@ -4,16 +4,15 @@ import java.util.List;
 
 import br.edu.pos.confrov.dao.ICidadeDAO;
 import br.edu.pos.confrov.dao.impl.CidadeDAOImpl;
-import br.edu.pos.confrov.entity.Categoria;
 import br.edu.pos.confrov.entity.Cidade;
-import br.edu.pos.confrov.entity.Estado;
 import br.edu.pos.confrov.persistence.Dba;
 import br.edu.pos.confrov.service.ICidadeService;
 
 public class CidadeServiceImpl implements ICidadeService{
+
+	private static final long serialVersionUID = 1L;
+
 	private ICidadeDAO cidadeDAO = new CidadeDAOImpl();
-
-
 
 	public Cidade criaCidade(Cidade cidade) {
 		// open transaction  
@@ -41,7 +40,7 @@ public class CidadeServiceImpl implements ICidadeService{
 	}
 	@Override
 	public List<Cidade> findByAll() {
-		
+
 		Dba dba = new Dba();
 		List<Cidade> cidades;
 		try {
@@ -49,22 +48,22 @@ public class CidadeServiceImpl implements ICidadeService{
 		} finally {
 			dba.closeEm();
 		}
-		
+
 		return cidades;
-		
+
 	}
 
 	@Override
 	public List<Cidade> findbyEstado(Long estado) {
 		// open transaction  
-				Dba dba = new Dba();
-				List<Cidade> cidades;
-				try{
-					cidades =  cidadeDAO.findbyEstado(estado);
-				} finally {
-					dba.closeEm();
-				}
-				return cidades;
+		Dba dba = new Dba();
+		List<Cidade> cidades;
+		try{
+			cidades =  cidadeDAO.findbyEstado(estado);
+		} finally {
+			dba.closeEm();
+		}
+		return cidades;
 	}
 
 
