@@ -2,6 +2,8 @@ package br.edu.pos.confrov.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -48,7 +51,10 @@ public class Veiculo implements Serializable {
 	
 	@Column(name="ve_valor_locacao")
 	private BigDecimal valorLocacao;
-
+	
+	@OneToMany(mappedBy="veiculo")
+	private List<Locacao> locacoes;
+	
 	public BigDecimal getValorLocacao() {
 		return valorLocacao;
 	}
