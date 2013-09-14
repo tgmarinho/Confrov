@@ -1,16 +1,50 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Hello JSF!</title>
-</h:head>
-<h:body> #{hello.message}
- <p:panel header="Teste"
-		style="width:50%">
-		<p:button value="Teste" />
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/template/templatePrincipal.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+
+	<p:panel header="Categoria">
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputText value="Descrição " />
+			<p:inputMask value="#{categoria.descricao}" maxlength="30"/>
+			
+			<p:commandButton value="Reset" type="reset" />
+			<p:commandButton value="Salvar" update="display" oncomplete="PF('dlg').show()"/>
+
+		</h:panelGrid>
 	</p:panel>
-</h:body>
-</html>
+	
+	<p:dialog widgetVar="dlg" modal="true">
+		<h:panelGrid id="display" columns="2" cellpadding="5">
+	
+			<h:outputText value="Date: " />
+			<h:outputText value="#{maskController.date}" />
+			
+			<h:outputText value="Phone: " />
+			<h:outputText value="#{maskController.phone}" />
+			
+			<h:outputText value="Phone with Ext: " />
+			<h:outputText value="#{maskController.phoneExt}"/>
+			
+			<h:outputText value="taxId: " />
+			<h:outputText value="#{maskController.taxId}" />
+			
+			<h:outputText value="SSN: " />
+			<h:outputText value="#{maskController.ssn}" />
+			
+			<h:outputText value="Product Key: " />
+			<h:outputText value="#{maskController.productKey}" />
+	
+		</h:panelGrid>
+	</p:dialog>
+	
+</h:form>
+
+	</ui:define>
+</ui:composition>

@@ -7,7 +7,7 @@ public class Menu {
 
 	
 	public String categoriaList(){
-		System.out.println("teste");
+		System.out.println("categoriaList");
 		return "categoriaList";
 	}
 	
