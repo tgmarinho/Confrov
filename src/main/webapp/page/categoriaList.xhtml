@@ -9,42 +9,28 @@
 	<ui:define name="content">
 		<h:form>
 
-	<p:panel header="Categoria">
-		<h:panelGrid columns="2" cellpadding="5">
-			<h:outputText value="Descrição " />
-			<p:inputMask value="#{categoria.descricao}" maxlength="30"/>
-			
-			<p:commandButton value="Reset" type="reset" />
-			<p:commandButton value="Salvar" update="display" oncomplete="PF('dlg').show()"/>
+			<p:panel header="Categoria">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="Descrição: " />
+					<p:inputMask value="#{categoria.descricao}" maxlength="30" />
 
-		</h:panelGrid>
-	</p:panel>
-	
-	<p:dialog widgetVar="dlg" modal="true">
-		<h:panelGrid id="display" columns="2" cellpadding="5">
-	
-			<h:outputText value="Date: " />
-			<h:outputText value="#{maskController.date}" />
-			
-			<h:outputText value="Phone: " />
-			<h:outputText value="#{maskController.phone}" />
-			
-			<h:outputText value="Phone with Ext: " />
-			<h:outputText value="#{maskController.phoneExt}"/>
-			
-			<h:outputText value="taxId: " />
-			<h:outputText value="#{maskController.taxId}" />
-			
-			<h:outputText value="SSN: " />
-			<h:outputText value="#{maskController.ssn}" />
-			
-			<h:outputText value="Product Key: " />
-			<h:outputText value="#{maskController.productKey}" />
-	
-		</h:panelGrid>
-	</p:dialog>
-	
-</h:form>
+					<p:commandButton value="Reset" type="reset" />
+					<p:commandButton value="Salvar" update="display"
+						oncomplete="PF('dlg').show()" />
+
+				</h:panelGrid>
+			</p:panel>
+
+			<p:dialog widgetVar="dlg" modal="true">
+				<h:panelGrid id="display" columns="2" cellpadding="5">
+
+					<h:outputText value="Descrição: " />
+					<h:outputText value="#{categoria.descricao}" />
+
+				</h:panelGrid>
+			</p:dialog>
+
+		</h:form>
 
 	</ui:define>
 </ui:composition>
