@@ -30,4 +30,15 @@ public class ModeloDAOImpl implements IModeloDAO {
 
 	}
 
+	@Override
+	public Modelo findById(Long id) {
+		Dba dba = new Dba(true);
+
+		try{
+			return (Modelo) dba.getActiveEm().createNamedQuery("Modelo.findById").setParameter("id", id).getSingleResult();
+		} finally{
+			dba.closeEm();
+		}
+	}
+
 }

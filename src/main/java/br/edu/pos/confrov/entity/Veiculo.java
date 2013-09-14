@@ -1,10 +1,16 @@
 package br.edu.pos.confrov.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
@@ -21,6 +27,7 @@ public class Veiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(generator="seq_veiculo", strategy=GenerationType.AUTO)
 	private Long id;
 	
 	@Column(name="ve_placa")
@@ -34,15 +41,21 @@ public class Veiculo implements Serializable {
 	
 	@Column(name="ve_cor")
 	private String cor;
-	
-	private Marca marca;
-	
+
+	@ManyToOne(fetch= FetchType.EAGER)
+	@JoinColumn(name="modelo_fk")
 	private Modelo modelo;
 	
-	private Categoria categoria;
-	
 	@Column(name="ve_valor_locacao")
-	private Double valorLocacao;
+	private BigDecimal valorLocacao;
+
+	public BigDecimal getValorLocacao() {
+		return valorLocacao;
+	}
+
+	public void setValorLocacao(BigDecimal valorLocacao) {
+		this.valorLocacao = valorLocacao;
+	}
 
 	public String getPlaca() {
 		return placa;
@@ -60,14 +73,6 @@ public class Veiculo implements Serializable {
 		this.cor = cor;
 	}
 
-	public Marca getMarca() {
-		return marca;
-	}
-
-	public void setMarca(Marca marca) {
-		this.marca = marca;
-	}
-
 	public Modelo getModelo() {
 		return modelo;
 	}
@@ -76,21 +81,6 @@ public class Veiculo implements Serializable {
 		this.modelo = modelo;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-	public Double getValorLocacao() {
-		return valorLocacao;
-	}
-
-	public void setValorLocacao(Double valorLocacao) {
-		this.valorLocacao = valorLocacao;
-	}
 
 	public Long getId() {
 		return id;

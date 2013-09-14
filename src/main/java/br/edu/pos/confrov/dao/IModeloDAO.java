@@ -9,4 +9,6 @@ public interface IModeloDAO {
 
 	public Modelo findByDescricao(String descricao);
 
+	public Modelo findById(Long id);
+
 }

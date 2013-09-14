@@ -15,7 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 abstract class GenericDAO<T> implements Serializable {
     private static final long serialVersionUID = 1L;
  
-    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("confrov-pu");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("confrovpu");
     private EntityManager em;
  
     private Class<T> entityClass;
@@ -60,7 +60,7 @@ abstract class GenericDAO<T> implements Serializable {
         em.persist(entity);
     }
  
-    protected void delete(Object id, Class<T> classe) {
+    public void delete(Object id, Class<T> classe) {
         T entityToBeRemoved = em.getReference(classe, id);
  
         em.remove(entityToBeRemoved);
@@ -70,13 +70,14 @@ abstract class GenericDAO<T> implements Serializable {
         return em.merge(entity);
     }
  
-    public T find(int entityID) {
+    public T find(Long entityID) {
         return em.find(entityClass, entityID);
     }
  
     public T findReferenceOnly(int entityID) {
         return em.getReference(entityClass, entityID);
     }
+    
  
     // Using the unchecked because JPA does not have a
     // em.getCriteriaBuilder().createQuery()<T> method

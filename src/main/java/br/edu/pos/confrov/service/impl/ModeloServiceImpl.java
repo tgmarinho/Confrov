@@ -10,8 +10,6 @@ public class ModeloServiceImpl implements IModeloService {
 
 	private IModeloDAO modeloDAO = new ModeloDAOImpl();
 
-
-
 	@Override
 	public Modelo criaModelo(Modelo modelo) {
 		// open transaction  
@@ -33,6 +31,18 @@ public class ModeloServiceImpl implements IModeloService {
 		Modelo modelo;
 		try{
 			modelo = modeloDAO.findByDescricao(descricao);
+		} finally {
+			dba.closeEm();
+		}
+		return modelo;
+	}
+
+	@Override
+	public Modelo findById(Long id) {
+		Dba dba = new Dba();
+		Modelo modelo;
+		try{
+			modelo = modeloDAO.findById(id);
 		} finally {
 			dba.closeEm();
 		}

@@ -1,6 +1,5 @@
 package br.edu.pos.confrov.test.modelo;
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import br.edu.pos.confrov.entity.Categoria;
