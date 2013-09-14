@@ -53,4 +53,17 @@ public class VeiculoTest {
 		
 	}
 	
+	@Test public void atualizaVeiculoTest(){
+		
+		daoGenerico.beginTransaction();
+		Veiculo v = daoGenerico.find(5L);
+		v.setAnoFabricacao(2020);
+		v.setCor("Blue");
+		v.setPlaca("YYY-1232");
+		daoGenerico.update(v);
+		daoGenerico.commitAndCloseTransaction();
+		
+		
+	}
+	
 }
