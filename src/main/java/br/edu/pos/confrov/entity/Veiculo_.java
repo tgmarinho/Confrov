@@ -3,7 +3,6 @@ package br.edu.pos.confrov.entity;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-
 @Generated(value="Dali", date="2013-09-13T12:39:12.515-0400")
 @StaticMetamodel(Veiculo.class)
 public class Veiculo_ {
