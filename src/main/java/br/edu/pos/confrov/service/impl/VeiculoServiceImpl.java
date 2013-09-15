@@ -13,7 +13,7 @@ public class VeiculoServiceImpl implements IVeiculoService {
 	IVeiculoDAO veiculoDAO = new VeiculoDAOImpl();
 
 	@Override
-	public Veiculo criaModelo(Veiculo veiculo) {
+	public Veiculo criaVeiculo(Veiculo veiculo) {
 		// open transaction  
 		Dba dba = new Dba();
 		try{
