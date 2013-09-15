@@ -11,4 +11,9 @@ public class Menu {
 		return "categoriaList";
 	}
 	
+	public String marcaMB(){
+		System.out.println("marcaMB");
+		return "marca";
+	}
+	
 }

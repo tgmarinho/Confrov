@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/template/templatePrincipal.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+			
+			<h:form id="formMarcaGeral">
+			
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			
+			<h:form id="formCadastroMarca">
+				
+				<p:panel header="Nova Marca" style="width:80%; margin: 5% 10%;">
+					<h:panelGrid columns="5" cellpadding="10">
+						<h:outputText value="Descrição: " />
+						<p:inputText value="#{marcaMB.marca.descricao}" maxlength="30" />
+
+						<p:commandButton value="Limpar" type="reset" />
+						<p:commandButton value="Salvar" action="#{marcaMB.salvar}" update=":formMarcaGeral:formListagemMarca"  />
+
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+
+			<h:form id="formListagemMarca">
+			<p:panel header="Listagem de Marca" style="width:80%; margin: 5% 10%;">
+				<p:dataTable id="tbMarca" value="#{marcaMB.listaMarcas}"
+					var="m" border="1" cellspacing="0" editable="true">
+					
+					<p:ajax event="rowEdit" listener="#{marcaMB.onEdit}" update=":formMarcaGeral:messages" />  
+       				<p:ajax event="rowEditCancel" listener="#{marcaMB.onCancel}" update=":formMarcaGeral:messages" />
+
+						<p:column headerText="Id" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{m.id}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{m.id}" readonly="true" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Descrição" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{m.descricao}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{m.descricao}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Editar" style="width:6%">
+							<p:rowEditor />
+						</p:column>
+
+						<p:column headerText="Excluir" style="width:30%">
+									<p:commandLink  style="width:100%" action="#{marcaMB.onExcluir}" value="Excluir" >
+									
+									 </p:commandLink> 
+						</p:column>
+
+
+					</p:dataTable>
+			</p:panel>
+			</h:form>
+			</h:form>
+	</ui:define>
+</ui:composition>

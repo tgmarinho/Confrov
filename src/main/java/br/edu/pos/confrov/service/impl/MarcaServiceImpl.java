@@ -1,7 +1,10 @@
 package br.edu.pos.confrov.service.impl;
 
+import java.util.List;
+
 import br.edu.pos.confrov.dao.IMarcaDAO;
 import br.edu.pos.confrov.dao.impl.MarcaDAOImpl;
+import br.edu.pos.confrov.entity.Categoria;
 import br.edu.pos.confrov.entity.Marca;
 import br.edu.pos.confrov.persistence.Dba;
 import br.edu.pos.confrov.service.IMarcaService;
@@ -40,6 +43,26 @@ public class MarcaServiceImpl implements IMarcaService {
 		}
 		return marca;
 
+	}
+
+
+	@Override
+	public List<Marca> findByAll() {
+		Dba dba = new Dba();
+		List<Marca> marcas;
+		try {
+			marcas = marcaDAO.findByAll();
+		} finally {
+			dba.closeEm();
+		}
+
+		return marcas;
+	}
+
+
+	@Override
+	public Marca editaMarca(Marca marca) {
+		return marca = marcaDAO.editaMarca(marca);
 	}
 
 }

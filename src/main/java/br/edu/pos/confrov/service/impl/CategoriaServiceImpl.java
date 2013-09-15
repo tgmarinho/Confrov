@@ -32,10 +32,7 @@ public class CategoriaServiceImpl implements ICategoriaService {
 
 	@Override
 	public Categoria findByDescricao(String descricao) {
-
-		Dba dba = new Dba(); // DBA abra e fecha e faz outroas coisas de conexao com o banco de dados
-		Categoria categoria;
-		categoria = categoriaDAO.findByDescricao(descricao);
+		Categoria categoria = categoriaDAO.findByDescricao(descricao);;
 		return categoria;
 	}
 
@@ -57,9 +54,7 @@ public class CategoriaServiceImpl implements ICategoriaService {
 	
 	@Override
 	public Categoria editaCategoria(Categoria categoria) {
-
 		return categoria = categoriaDAO.editaCategoria(categoria);
-	
 	}
 
 	
