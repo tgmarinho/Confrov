@@ -7,30 +7,49 @@
 	<ui:define name="metadata">
 	</ui:define>
 	<ui:define name="content">
-		<h:form>
-		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
-			<p:panel header="Categoria">
-				<h:panelGrid columns="2" cellpadding="5">
-					<h:outputText value="Descrição: " />
-					<p:inputText value="#{categoria.categoria.descricao}" maxlength="30" />
+			
+			<h:form id="formCategoriaGeral">
+			<h:form id="formCadastroCategoria">
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+				<p:panel header="Nova Categoria" style="width:80%; margin: 5% 10%;">
+					<h:panelGrid columns="5" cellpadding="10">
+						<h:outputText value="Descrição: " />
+						<p:inputText value="#{categoria.categoria.descricao}" maxlength="30" />
 
-					<p:commandButton value="Reset" type="reset" />
-					<p:commandButton value="Salvar" action="#{categoria.salvar}" update="display"
-						oncomplete="PF('dlg').show()" />
+						<p:commandButton value="Reset" type="reset" />
+						<p:commandButton value="Salvar" action="#{categoria.salvar}" update=":formCategoriaGeral:formListagemCategoria"  />
 
-				</h:panelGrid>
-			</p:panel>
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
 
-			<p:dialog widgetVar="dlg" modal="true">
-				<h:panelGrid id="display" columns="2" cellpadding="5">
+			<h:form id="formListagemCategoria">
+				<p:dataTable id="tbPaciente" value="#{categoria.listaCategoria}"
+					var="cat" border="1" cellspacing="0">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Código" />
+						</f:facet>
+						<h:outputText value="#{cat.id}" />
+					</p:column>
 
-					<h:outputText value="Descrição: " />
-					<h:outputText value="#{categoria.categoria.descricao}" />
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nome" />
+						</f:facet>
+						<h:outputText value="#{cat.descricao}" />
+					</p:column>
 
-				</h:panelGrid>
-			</p:dialog>
+					<p:column style="width:50px">
+						<p:commandButton id="editar"
+							action="#{categoria.editar(categoria)}"
+							oncomplete="localizar.hide()" image="ui-icon ui-icon-pencil"
+							style="width:28px;height:28px" title="Edit" />
+					</p:column>
 
-		</h:form>
-
+				</p:dataTable>
+			</h:form>
+			</h:form>
 	</ui:define>
 </ui:composition>

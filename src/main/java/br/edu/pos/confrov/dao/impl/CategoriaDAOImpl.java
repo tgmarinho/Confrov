@@ -27,10 +27,16 @@ public class CategoriaDAOImpl implements ICategoriaDAO {
 		Dba dba = new Dba(true);
 
 		try{
-			return (Categoria) dba.getActiveEm().createNamedQuery("Categoria.findByDescricao").setParameter("descricao", descricao).getSingleResult();
-		} finally{
+//			Categoria c = (Categoria) dba.getActiveEm().createNamedQuery("Categoria.findByDescricao").setParameter("descricao", descricao).getSingleResult(); 
+//			return (c != null) ? c : null;
+			return (Categoria) dba.getActiveEm().createNamedQuery("Categoria.findByDescricao").setParameter("descricao", descricao).getSingleResult(); 
+		}catch (Exception c){
+			c.printStackTrace();
+		}
+		finally{
 			dba.closeEm();
 		}
+		return null;
 	}
 
 	@SuppressWarnings("unchecked")
