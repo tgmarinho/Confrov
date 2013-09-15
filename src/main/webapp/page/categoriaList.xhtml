@@ -9,15 +9,17 @@
 	<ui:define name="content">
 			
 			<h:form id="formCategoriaGeral">
+			
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			
 			<h:form id="formCadastroCategoria">
-				<p:messages id="messages" showDetail="true" autoUpdate="true"
-					closable="true" />
+				
 				<p:panel header="Nova Categoria" style="width:80%; margin: 5% 10%;">
 					<h:panelGrid columns="5" cellpadding="10">
 						<h:outputText value="Descrição: " />
 						<p:inputText value="#{categoria.categoria.descricao}" maxlength="30" />
 
-						<p:commandButton value="Reset" type="reset" />
+						<p:commandButton value="Limpar" type="reset" />
 						<p:commandButton value="Salvar" action="#{categoria.salvar}" update=":formCategoriaGeral:formListagemCategoria"  />
 
 					</h:panelGrid>
@@ -25,31 +27,48 @@
 			</h:form>
 
 			<h:form id="formListagemCategoria">
-			<p:panel header="Nova Categoria" style="width:80%; margin: 5% 10%;">
+			<p:panel header="Listagem de Categoria" style="width:80%; margin: 5% 10%;">
 				<p:dataTable id="tbPaciente" value="#{categoria.listaCategoria}"
-					var="cat" border="1" cellspacing="0">
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="Código" />
-						</f:facet>
-						<h:outputText value="#{cat.id}" />
-					</p:column>
+					var="cat" border="1" cellspacing="0" editable="true">
+					
+					<p:ajax event="rowEdit" listener="#{categoria.onEdit}" update=":formCategoriaGeral:messages" />  
+       				<p:ajax event="rowEditCancel" listener="#{categoria.onCancel}" update=":formCategoriaGeral:messages" />
 
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="Nome" />
-						</f:facet>
-						<h:outputText value="#{cat.descricao}" />
-					</p:column>
+						<p:column headerText="Id" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{cat.id}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{cat.id}" readonly="true" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Descrição" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{cat.descricao}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{cat.descricao}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
 
-					<p:column style="width:50px">
-						<p:commandButton id="editar"
-							action="#{categoria.editar(categoria)}"
-							oncomplete="localizar.hide()" image="ui-icon ui-icon-pencil"
-							style="width:28px;height:28px" title="Edit" />
-					</p:column>
-				</p:dataTable>
-</p:panel>
+						<p:column headerText="Editar" style="width:6%">
+							<p:rowEditor />
+						</p:column>
+
+						<p:column headerText="Excluir" style="width:30%">
+									<p:commandLink  style="width:100%" action="#{categoria.onExcluir}" value="Excluir" >
+									
+									 </p:commandLink> 
+						</p:column>
+
+
+					</p:dataTable>
+			</p:panel>
 			</h:form>
 			</h:form>
 	</ui:define>

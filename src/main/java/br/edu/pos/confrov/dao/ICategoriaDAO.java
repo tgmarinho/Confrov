@@ -14,4 +14,6 @@ public interface ICategoriaDAO extends Serializable {
 
 	public List<Categoria> findByAll();
 
+	public Categoria editaCategoria(Categoria categoria);
+
 }

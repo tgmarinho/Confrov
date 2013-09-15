@@ -54,4 +54,13 @@ public class CategoriaServiceImpl implements ICategoriaService {
 
 	}
 
+	
+	@Override
+	public Categoria editaCategoria(Categoria categoria) {
+
+		return categoria = categoriaDAO.editaCategoria(categoria);
+	
+	}
+
+	
 }

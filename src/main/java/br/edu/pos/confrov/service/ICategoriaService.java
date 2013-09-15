@@ -16,5 +16,6 @@ public interface ICategoriaService extends Serializable {
 
 	public List<Categoria> findByAll();
 
+	public Categoria editaCategoria(Categoria categoria);
 
 }

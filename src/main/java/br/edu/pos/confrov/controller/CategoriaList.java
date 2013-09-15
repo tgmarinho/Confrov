@@ -9,6 +9,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.event.RowEditEvent;
+
 import br.edu.pos.confrov.entity.Categoria;
 import br.edu.pos.confrov.service.ICategoriaService;
 import br.edu.pos.confrov.service.impl.CategoriaServiceImpl;
@@ -50,10 +52,28 @@ public class CategoriaList implements Serializable {
 		return "";
 	}
 
-
-	public void editar(){
-
+	public void onEdit(RowEditEvent event) {
+		FacesMessage msg = new FacesMessage("Categoria Edited", ((Categoria) event.getObject()).getDescricao());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		
+		categoriaService.editaCategoria((Categoria) event.getObject());
+		buscaCategorias();
 	}
+
+	public void onCancel(RowEditEvent event) {
+		FacesMessage msg = new FacesMessage("Categoria cancelada", ((Categoria) event.getObject()).getDescricao());
+
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
+	public void onExcluir(RowEditEvent event) {
+		FacesMessage msg = new FacesMessage("Categoria excluída", ((Categoria) event.getObject()).getDescricao());
+		System.out.println("teste excluir");
+
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+
+
 	public Categoria getCategoria() {
 		return categoria;
 	}

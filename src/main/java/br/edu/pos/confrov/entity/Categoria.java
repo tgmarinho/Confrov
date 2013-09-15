@@ -17,7 +17,7 @@ import javax.persistence.UniqueConstraint;
 @SequenceGenerator(name="seq_categoria", sequenceName="seq_categoria", initialValue=1, allocationSize=1)
 @Table(name="tb_categoria", uniqueConstraints=@UniqueConstraint(columnNames="ca_descricao"))
 @NamedQueries({
-    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c"),
+    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c order by c.descricao desc"),
     @NamedQuery(name = "Categoria.findByDescricao", query = "SELECT c FROM Categoria c WHERE c.descricao = :descricao"),
     @NamedQuery(name = "Categoria.findById", query = "SELECT c FROM Categoria c WHERE c.id = :id")})
 public class Categoria implements Serializable{

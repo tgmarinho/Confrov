@@ -3,6 +3,7 @@ package br.edu.pos.confrov.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import br.edu.pos.confrov.dao.ICategoriaDAO;
 import br.edu.pos.confrov.entity.Categoria;
@@ -22,13 +23,34 @@ public class CategoriaDAOImpl implements ICategoriaDAO {
 	}
 
 	@Override
+	public Categoria editaCategoria(Categoria categoria) {
+
+		Dba dba = new Dba();
+		try{
+			EntityTransaction tx =  dba.getActiveEm().getTransaction();
+			if(!tx.isActive()){
+				tx.begin();
+			}
+			dba.getActiveEm().merge(categoria);
+			tx.commit();
+			return dba.getActiveEm().find(Categoria.class, categoria.getId());
+			
+		} catch (Exception e ){
+			e.printStackTrace();
+		} finally {
+			dba.getActiveEm().close();
+		}
+		return categoria;  
+	}
+
+	@Override
 	public Categoria findByDescricao(String descricao) {
-	
+
 		Dba dba = new Dba(true);
 
 		try{
-//			Categoria c = (Categoria) dba.getActiveEm().createNamedQuery("Categoria.findByDescricao").setParameter("descricao", descricao).getSingleResult(); 
-//			return (c != null) ? c : null;
+			//			Categoria c = (Categoria) dba.getActiveEm().createNamedQuery("Categoria.findByDescricao").setParameter("descricao", descricao).getSingleResult(); 
+			//			return (c != null) ? c : null;
 			return (Categoria) dba.getActiveEm().createNamedQuery("Categoria.findByDescricao").setParameter("descricao", descricao).getSingleResult(); 
 		}catch (Exception c){
 			c.printStackTrace();
