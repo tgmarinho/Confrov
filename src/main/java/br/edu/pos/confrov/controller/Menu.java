@@ -16,4 +16,9 @@ public class Menu {
 		return "marca";
 	}
 	
+	public String modeloMB(){
+		System.out.println("modeloMB");
+		return "modelo";
+	}
+	
 }

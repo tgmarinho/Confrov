@@ -1,5 +1,7 @@
 package br.edu.pos.confrov.service.impl;
 
+import java.util.List;
+
 import br.edu.pos.confrov.dao.IModeloDAO;
 import br.edu.pos.confrov.dao.impl.ModeloDAOImpl;
 import br.edu.pos.confrov.entity.Modelo;
@@ -49,6 +51,25 @@ public class ModeloServiceImpl implements IModeloService {
 			dba.closeEm();
 		}
 		return modelo;
+	}
+
+	@Override
+	public List<Modelo> findByAll() {
+		Dba dba = new Dba();
+		List<Modelo> modelos;
+		try {
+			modelos = modeloDAO.findByAll();
+		} finally {
+			dba.closeEm();
+		}
+
+		return modelos;
+	}
+
+
+	@Override
+	public Modelo editaModelo(Modelo modelo) {
+		return modelo = modeloDAO.editaModelo(modelo);
 	}
 
 }

@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import br.edu.pos.confrov.dao.IMarcaDAO;
-import br.edu.pos.confrov.entity.Categoria;
 import br.edu.pos.confrov.entity.Marca;
 import br.edu.pos.confrov.persistence.Dba;
 

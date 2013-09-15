@@ -1,7 +1,5 @@
 package br.edu.pos.confrov.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,14 +13,16 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import br.edu.pos.confrov.utils.AbstractEntity;
+
 @Entity
 @SequenceGenerator(name="seq_modelo", sequenceName="seq_modelo", initialValue=1, allocationSize=1)
 @Table(name="tb_modelo", uniqueConstraints=@UniqueConstraint(columnNames="mo_descricao"))
 @NamedQueries({
-    @NamedQuery(name = "Modelo.findAll", query = "SELECT m FROM Modelo m"),
+    @NamedQuery(name = "Modelo.findAll", query = "SELECT m FROM Modelo m order by m.descricao desc"),
     @NamedQuery(name = "Modelo.findByDescricao", query = "SELECT m FROM Modelo m WHERE m.descricao = :descricao"),
     @NamedQuery(name = "Modelo.findById", query = "SELECT m FROM Modelo m WHERE m.id = :id")})
-public class Modelo implements Serializable{
+public class Modelo extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 
