@@ -8,17 +8,17 @@
 	</ui:define>
 	<ui:define name="content">
 			
-			<h:form id="formVeiculoGeral">
+			<h:form id="formLocacaoGeral">
 			
 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 			
-			<h:form id="formCadastroVeiculo">
+			<h:form id="formLocacaoVeiculo">
 				
-				<p:panel header="Nova Veiculo" style="width:80%; margin: 5% 10%;">
+				<p:panel header="Nova Locação" style="width:80%; margin: 5% 10%;">
 					<h:panelGrid columns="6" cellpadding="10">
 						
-						<h:outputText value="Placa: " />
-						<p:inputText value="#{veiculoMB.veiculo.placa}" maxlength="30" />
+						<h:outputText value="Data de Retirada: " />
+						<p:inputText value="#{locacaoMB.}" maxlength="30" />
 						
 						<h:outputText value="Cor: " />
 						<p:inputText value="#{veiculoMB.veiculo.cor}" maxlength="30" />

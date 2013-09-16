@@ -1,6 +1,5 @@
 package br.edu.pos.confrov.entity;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -15,6 +14,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 
+import br.edu.pos.confrov.utils.AbstractEntity;
+
 @Entity
 @SequenceGenerator(name = "seq_locacao", sequenceName = "seq_locacao", initialValue = 1, allocationSize = 1)
 @NamedQueries({
@@ -23,7 +24,7 @@ import javax.persistence.SequenceGenerator;
 	@NamedQuery(name = "Locacao.findByCliente", query = "SELECT l FROM Locacao l JOIN FETCH l.cliente WHERE l.cliente = :idCliente"),
 	@NamedQuery(name = "Locacao.findByVeiculo", query = "SELECT l FROM Locacao l JOIN FETCH l.veiculo WHERE l.veiculo = :idVeiculo"),
 	@NamedQuery(name = "Locacao.findById", query = "SELECT l FROM Locacao l WHERE l.id = :id") })
-public class Locacao implements Serializable{
+public class Locacao extends AbstractEntity {
 
 	//SELECT x FROM Magazine x join fetch x.articles WHERE x.title = 'JDJ'
 	
