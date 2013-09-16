@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/template/templatePrincipal.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+
+		<h:form id="formEstadoGeral">
+
+			<p:messages id="messages" showDetail="true" autoUpdate="true"
+				closable="true" />
+
+			<h:form id="formEstadoCategoria">
+
+				<p:panel header="Novo Estado" style="width:80%; margin: 5% 10%;">
+					<h:panelGrid columns="5" cellpadding="10">
+						<h:outputText value="Nome: " />
+						<p:inputText value="#{estadoMB.estado.nome}" maxlength="100" />
+						<h:outputText value="Sigla: " />
+						<p:inputText value="#{estadoMB.estado.sigla}" maxlength="3" />
+						<p:commandButton value="Limpar" type="reset" />
+						<p:commandButton value="Salvar" action="#{estadoMB.salvar}"
+							update=":formEstadoGeral:formListagemEstado" />
+
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+
+			<h:form id="formListagemEstado">
+				<p:panel header="Listagem de Estados"
+					style="width:80%; margin: 5% 10%;">
+					<p:dataTable id="tbestado" value="#{estadoMB.listaEstado}" var="es"
+						border="1" cellspacing="0" editable="true">
+
+						<p:ajax event="rowEdit" listener="#{estadoMB.onEdit}"
+							update="formEstadoCategoria:messages" />
+						<p:ajax event="rowEditCancel" listener="#{estadoMB.onCancel}"
+							update=":formEstadoCategoria:messages" />
+
+						<p:column headerText="Id" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{es.id}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{es.id}" readonly="true"
+										style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Nome" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{es.nome}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{es.nome}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Sigla" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{es.sigla}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{es.sigla}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+
+						<p:column headerText="Editar" style="width:6%">
+							<p:rowEditor />
+						</p:column>
+
+						<p:column headerText="Excluir" style="width:30%">
+							<p:commandLink style="width:100%" action="#{estadoMB.onExcluir}"
+								value="Excluir">
+
+							</p:commandLink>
+						</p:column>
+
+
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+		</h:form>
+	</ui:define>
+</ui:composition>

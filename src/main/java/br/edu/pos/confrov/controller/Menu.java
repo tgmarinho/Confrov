@@ -23,6 +23,10 @@ public class Menu {
 	
 	public String estadoMB(){
 		System.out.println("estadoMB");
-		return "estadoCadastro";
+		return "estado";
+	}
+	public String cidadeMB(){
+		System.out.println("cidadeMB");
+		return "cidade";
 	}
 }

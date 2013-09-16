@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/template/templatePrincipal.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+			
+			<h:form id="formCidadeGeral">
+			
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			
+			<h:form id="formCadastroCidade">
+				
+				<p:panel header="Nova Cidade" style="width:80%; margin: 5% 10%;">
+					<h:panelGrid columns="6" cellpadding="10">
+						<h:outputText value="Nome: " />
+						<p:inputText value="#{cidadeMB.cidade.nome}" maxlength="30" />
+						<h:outputText value="Estado: " />
+						<h:selectOneMenu value="#{cidadeMB.cidade.estado}" converter="entityConverter">
+							<f:selectItems value="#{estadoMB.listaEstado}" var="marca"
+								itemLabel="#{estado}" itemValue="#{estado}" />
+						</h:selectOneMenu>
+
+						<p:commandButton value="Limpar" type="reset" />
+						<p:commandButton value="Salvar" action="#{estadoMB.salvar}" update=":formCidadeGeral:formListagemCidade"  />
+
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+
+			<h:form id="formListagemCidade">
+			<p:panel header="Listagem de Cidade" style="width:80%; margin: 5% 10%;">
+				<p:dataTable id="tbCidade" value="#{cidadeMB.listaCidae}"
+					var="c" border="1" cellspacing="0" editable="true">
+					
+					<p:ajax event="rowEdit" listener="#{cidadeMB.onEdit}" update=":formCidadeGeral:messages" />  
+       				<p:ajax event="rowEditCancel" listener="#{cidadeMB.onCancel}" update=":formCidadeGeral:messages" />
+
+						<p:column headerText="Id" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{c.id}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{c.id}" readonly="true" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Nome" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{c.nome}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{c.nome}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Estado" style="width:24%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{c.estado.nome}" />
+								</f:facet>
+								<f:facet name="input">
+									<h:selectOneMenu value="#{c.estado}" converter="entityConverter">
+										<f:selectItems value="#{estadoMB.listaEstado}" var="marca"
+											itemLabel="#{estado}" itemValue="#{estado}" />
+									</h:selectOneMenu>
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+
+						<p:column headerText="Editar" style="width:6%">
+							<p:rowEditor />
+						</p:column>
+
+						<p:column headerText="Excluir" style="width:30%">
+									<p:commandLink  style="width:100%" action="#{estadoMB.onExcluir}" value="Excluir" >
+									
+									 </p:commandLink> 
+						</p:column>
+
+
+					</p:dataTable>
+			</p:panel>
+			</h:form>
+			</h:form>
+	</ui:define>
+</ui:composition>
