@@ -1,6 +1,7 @@
 package br.edu.pos.confrov.entity;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import br.edu.pos.confrov.utils.AbstractEntity;
 
@@ -39,11 +42,13 @@ public class Locacao extends AbstractEntity {
 	@GeneratedValue(generator="seq_locacao", strategy=GenerationType.AUTO)
 	private Long id;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name="dt_retirada")
-	private String dataRetirada;
+	private Date dataRetirada;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name="dt_devolucao")
-	private Integer dataDevolucao;
+	private Date dataDevolucao;
 
 	@Column(name="vlr_diaria")
 	private BigDecimal valorDario;
@@ -61,22 +66,6 @@ public class Locacao extends AbstractEntity {
 
 	// Getters and Setters
 	
-	public String getDataRetirada() {
-		return dataRetirada;
-	}
-
-	public void setDataRetirada(String dataRetirada) {
-		this.dataRetirada = dataRetirada;
-	}
-
-	public Integer getDataDevolucao() {
-		return dataDevolucao;
-	}
-
-	public void setDataDevolucao(Integer dataDevolucao) {
-		this.dataDevolucao = dataDevolucao;
-	}
-
 	public BigDecimal getValorDario() {
 		return valorDario;
 	}
@@ -138,6 +127,22 @@ public class Locacao extends AbstractEntity {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Date getDataRetirada() {
+		return dataRetirada;
+	}
+
+	public void setDataRetirada(Date dataRetirada) {
+		this.dataRetirada = dataRetirada;
+	}
+
+	public Date getDataDevolucao() {
+		return dataDevolucao;
+	}
+
+	public void setDataDevolucao(Date dataDevolucao) {
+		this.dataDevolucao = dataDevolucao;
 	}
 	
 }
