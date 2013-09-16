@@ -10,8 +10,7 @@
 
 		<h:form id="formEstadoGeral">
 
-			<p:messages id="messages" showDetail="true" autoUpdate="true"
-				closable="true" />
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 
 			<h:form id="formEstadoCategoria">
 
@@ -22,8 +21,7 @@
 						<h:outputText value="Sigla: " />
 						<p:inputText value="#{estadoMB.estado.sigla}" maxlength="3" />
 						<p:commandButton value="Limpar" type="reset" />
-						<p:commandButton value="Salvar" action="#{estadoMB.salvar}"
-							update=":formEstadoGeral:formListagemEstado" />
+						<p:commandButton value="Salvar" action="#{estadoMB.salvar}" update=":formEstadoGeral:formListagemEstado" />
 
 					</h:panelGrid>
 				</p:panel>
@@ -32,13 +30,10 @@
 			<h:form id="formListagemEstado">
 				<p:panel header="Listagem de Estados"
 					style="width:80%; margin: 5% 10%;">
-					<p:dataTable id="tbestado" value="#{estadoMB.listaEstado}" var="es"
-						border="1" cellspacing="0" editable="true">
+					<p:dataTable id="tbestado" value="#{estadoMB.listaEstado}" var="es" border="1" cellspacing="0" editable="true">
 
-						<p:ajax event="rowEdit" listener="#{estadoMB.onEdit}"
-							update="formEstadoCategoria:messages" />
-						<p:ajax event="rowEditCancel" listener="#{estadoMB.onCancel}"
-							update=":formEstadoCategoria:messages" />
+						<p:ajax event="rowEdit" listener="#{estadoMB.onEdit}" update=":formEstadoGeral:messages" />
+						<p:ajax event="rowEditCancel" listener="#{estadoMB.onCancel}" update=":formEstadoGeral:messages" />
 
 						<p:column headerText="Id" style="width:30%">
 							<p:cellEditor>
@@ -46,8 +41,7 @@
 									<h:outputText value="#{es.id}" />
 								</f:facet>
 								<f:facet name="input">
-									<p:inputText value="#{es.id}" readonly="true"
-										style="width:100%" />
+									<p:inputText value="#{es.id}" readonly="true" style="width:100%" />
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
@@ -80,9 +74,7 @@
 						</p:column>
 
 						<p:column headerText="Excluir" style="width:30%">
-							<p:commandLink style="width:100%" action="#{estadoMB.onExcluir}"
-								value="Excluir">
-
+							<p:commandLink style="width:100%" action="#{estadoMB.onExcluir}" value="Excluir">
 							</p:commandLink>
 						</p:column>
 
