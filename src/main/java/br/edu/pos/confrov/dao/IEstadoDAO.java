@@ -15,5 +15,7 @@ public interface IEstadoDAO extends Serializable {
 	
 	public Estado findById(int Id);
 
+	public Estado editaEstado(Estado Estado);
+
 
 }

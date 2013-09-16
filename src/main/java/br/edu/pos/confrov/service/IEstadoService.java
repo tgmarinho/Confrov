@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import br.edu.pos.confrov.entity.Estado;
+import br.edu.pos.confrov.entity.Estado;
 
 public interface IEstadoService extends Serializable{
 	
@@ -15,5 +16,7 @@ public interface IEstadoService extends Serializable{
 	public List<Estado> findByAll();
 	
 	public Estado findById(int Id);
+	
+	public Estado editaEstado(Estado Estado);
 
 }

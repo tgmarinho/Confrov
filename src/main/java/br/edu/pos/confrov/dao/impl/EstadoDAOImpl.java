@@ -3,8 +3,10 @@ package br.edu.pos.confrov.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import br.edu.pos.confrov.dao.IEstadoDAO;
+import br.edu.pos.confrov.entity.Estado;
 import br.edu.pos.confrov.entity.Estado;
 import br.edu.pos.confrov.persistence.Dba;
 
@@ -31,6 +33,28 @@ public class EstadoDAOImpl implements IEstadoDAO {
 			dba.closeEm();
 		}
 	}
+	
+	@Override
+	public Estado editaEstado (Estado Estado) {
+
+		Dba dba = new Dba();
+		try{
+			EntityTransaction tx =  dba.getActiveEm().getTransaction();
+			if(!tx.isActive()){
+				tx.begin();
+			}
+			dba.getActiveEm().merge(Estado);
+			tx.commit();
+			return dba.getActiveEm().find(Estado.class, Estado.getId());
+			
+		} catch (Exception e ){
+			e.printStackTrace();
+		} finally {
+			dba.getActiveEm().close();
+		}
+		return Estado;  
+	}
+
 
 	@SuppressWarnings("unchecked")
 	@Override

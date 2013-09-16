@@ -18,7 +18,7 @@ public class CidadeTest {
 	IEstadoService estadoService= new EstadoServiceImpl();
 	Cidade cidade= new Cidade();
 
-	@Test
+	/*@Test
 	public void cadastraCidadeTest() {
 
 		Cidade cidade = new Cidade();
@@ -44,7 +44,7 @@ public class CidadeTest {
 
 
 
-	}	
+	}*/	
 
 	@Test	
 	public void buscaPorEstado(){ 

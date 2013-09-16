@@ -17,12 +17,12 @@ IEstadoService estadoService = new EstadoServiceImpl();
 	public void cadastraEstadotest() { // nesse teste passou
 		
 	Estado estado = new Estado();
-	estado.setNome("Goiás" );
-	estado.setSigla("GO");
+	estado.setNome("Paraná" );
+	estado.setSigla("PR");
 	
 	Estado estadoSalva = estadoService.criaEstado(estado);
-	assertEquals("Goiás", estadoSalva.getNome());
-	assertEquals("GO",estadoSalva.getSigla());
+	assertEquals("Paraná", estadoSalva.getNome());
+	assertEquals("PR",estadoSalva.getSigla());
 		
 	}
 	

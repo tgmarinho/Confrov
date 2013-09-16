@@ -21,4 +21,8 @@ public class Menu {
 		return "modelo";
 	}
 	
+	public String estadoMB(){
+		System.out.println("estadoMB");
+		return "estadoCadastro";
+	}
 }

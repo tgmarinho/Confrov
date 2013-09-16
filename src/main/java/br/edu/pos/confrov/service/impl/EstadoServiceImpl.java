@@ -62,4 +62,9 @@ public class EstadoServiceImpl implements IEstadoService {
 		}
 	}
 
+	@Override
+	public Estado editaEstado(Estado Estado) {
+		return Estado = estadoDAO.editaEstado(Estado);
+	}
+
 }

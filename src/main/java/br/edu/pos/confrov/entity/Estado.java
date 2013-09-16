@@ -30,6 +30,7 @@ public class Estado implements Serializable {
 	@Column(name = "es_nome", unique = true, nullable = false)
 	private String nome;
 	
+	@Column(name = "es_sigla")
 	private String sigla;
 	
 	public String getSigla(){
