@@ -19,9 +19,14 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(name = "seq_locacao", sequenceName = "seq_locacao", initialValue = 1, allocationSize = 1)
 @NamedQueries({
 	@NamedQuery(name = "Locacao.findAll", query = "SELECT l FROM Locacao l"),
+	@NamedQuery(name = "Locacao.findByPeriodo", query = "SELECT l FROM Locacao l WHERE l.dataDevolucao >= :dataInicial and l.dataDevolucao <= :dataFinal"),
+	@NamedQuery(name = "Locacao.findByCliente", query = "SELECT l FROM Locacao l JOIN FETCH l.cliente WHERE l.cliente = :idCliente"),
+	@NamedQuery(name = "Locacao.findByVeiculo", query = "SELECT l FROM Locacao l JOIN FETCH l.veiculo WHERE l.veiculo = :idVeiculo"),
 	@NamedQuery(name = "Locacao.findById", query = "SELECT l FROM Locacao l WHERE l.id = :id") })
 public class Locacao implements Serializable{
 
+	//SELECT x FROM Magazine x join fetch x.articles WHERE x.title = 'JDJ'
+	
 	private static final long serialVersionUID = 1L;
 
 	/*
@@ -49,6 +54,89 @@ public class Locacao implements Serializable{
 	@JoinColumn(name="veiculo_fk")
 	private Veiculo veiculo;
 	
-	
+	@ManyToOne(fetch= FetchType.EAGER)
+	@JoinColumn(name="cliente_fk")
+	private Cliente cliente;
 
+	// Getters and Setters
+	
+	public String getDataRetirada() {
+		return dataRetirada;
+	}
+
+	public void setDataRetirada(String dataRetirada) {
+		this.dataRetirada = dataRetirada;
+	}
+
+	public Integer getDataDevolucao() {
+		return dataDevolucao;
+	}
+
+	public void setDataDevolucao(Integer dataDevolucao) {
+		this.dataDevolucao = dataDevolucao;
+	}
+
+	public BigDecimal getValorDario() {
+		return valorDario;
+	}
+
+	public void setValorDario(BigDecimal valorDario) {
+		this.valorDario = valorDario;
+	}
+
+	public BigDecimal getValorTotalLocacao() {
+		return valorTotalLocacao;
+	}
+
+	public void setValorTotalLocacao(BigDecimal valorTotalLocacao) {
+		this.valorTotalLocacao = valorTotalLocacao;
+	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	// HashCode and Equals
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Locacao other = (Locacao) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+	
 }

@@ -1,0 +1,123 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/template/templatePrincipal.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+			
+			<h:form id="formVeiculoGeral">
+			
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			
+			<h:form id="formCadastroVeiculo">
+				
+				<p:panel header="Nova Veiculo" style="width:80%; margin: 5% 10%;">
+					<h:panelGrid columns="6" cellpadding="10">
+						
+						<h:outputText value="Placa: " />
+						<p:inputText value="#{veiculoMB.veiculo.placa}" maxlength="30" />
+						
+						<h:outputText value="Cor: " />
+						<p:inputText value="#{veiculoMB.veiculo.cor}" maxlength="30" />
+						
+						<h:outputText value="Ano de Fabricação: " />
+						<p:inputText value="#{veiculoMB.veiculo.anoFabricacao}" maxlength="30" />
+						
+						<h:outputText value="Ano de Modelo: " />
+						<p:inputText value="#{veiculoMB.veiculo.anoModelo}" maxlength="30" />
+	
+						<h:outputText value="Valor de Locação: " />
+						<p:inputText value="#{veiculoMB.veiculo.valorLocacao}" maxlength="30" />
+						
+						<h:outputText value="Modelo: "/>
+						<h:selectOneMenu value="#{veiculoMB.veiculo.modelo}" converter="entityConverter">
+							<f:selectItems value="#{modeloMB.listaModelos}" var="modelo"
+								itemLabel="#{modelo}" itemValue="#{modelo}" />
+						</h:selectOneMenu>
+						
+						<p:commandButton value="Limpar" type="reset" />
+						<p:commandButton value="Salvar" action="#{veiculoMB.salvar}" update=":formVeiculoGeral:formListagemVeiculo"  />
+
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+
+			<h:form id="formListagemVeiculo">
+			<p:panel header="Listagem de Veiculo" style="width:80%; margin: 5% 10%;">
+				<p:dataTable id="tbVeiculo" value="#{veiculoMB.listaVeiculos}"
+					var="m" border="1" cellspacing="0" editable="true">
+					
+					<p:ajax event="rowEdit" listener="#{veiculoMB.onEdit}" update=":formVeiculoGeral:messages" />  
+       				<p:ajax event="rowEditCancel" listener="#{veiculoMB.onCancel}" update=":formVeiculoGeral:messages" />
+
+						<p:column headerText="Id" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{m.id}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{m.id}" readonly="true" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Placa" style="width:30%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{m.placa}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{m.placa}" style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Ano de Fabricacao" style="width:24%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{m.anoFabricacao}" />
+								</f:facet>
+								<f:facet name="input">
+									<h:inputText value="#{m.anoFabricacao}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Modelo" style="width:24%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{m.modelo}" />
+								</f:facet>
+								<f:facet name="input">
+									<h:selectOneMenu value="#{m.modelo}" converter="entityConverter">
+										<f:selectItems value="#{modeloMB.listaModelos}" var="mode"
+											itemLabel="#{mode}" itemValue="#{mode}" />
+									</h:selectOneMenu>
+								</f:facet>								
+
+							</p:cellEditor>
+						</p:column>
+
+
+
+
+						<p:column headerText="Editar" style="width:6%">
+							<p:rowEditor />
+						</p:column>
+
+						<p:column headerText="Excluir" style="width:30%">
+									<p:commandLink  style="width:100%" action="#{veiculoMB.onExcluir}" value="Excluir" >
+									
+									 </p:commandLink> 
+						</p:column>
+
+
+					</p:dataTable>
+			</p:panel>
+			</h:form>
+			</h:form>
+	</ui:define>
+</ui:composition>

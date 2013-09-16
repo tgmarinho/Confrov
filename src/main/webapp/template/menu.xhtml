@@ -10,9 +10,6 @@
 		<p:growl id="messages" />
 
 		<p:menu>
-			<p:submenu label="Pesquisas">
-				<p:menuitem value="Buscas por Filtros" icon="ui-icon-disk" />
-			</p:submenu>
 			<p:submenu label="Cadastro Geral">
 				<p:menuitem value="Cliente" icon="ui-icon-disk" />
 				<p:menuitem value="Estado"  action="#{menu.estadoMB}" icon="ui-icon-disk" />
@@ -24,8 +21,8 @@
 				<p:menuitem value="Modelo" action="#{menu.modeloMB}" icon="ui-icon-disk" />
 				<p:menuitem value="Veículo" action="#{menu.veiculoMB}" icon="ui-icon-disk" />
 			</p:submenu>
-			<p:submenu label="Cadastro Locação">
-				<p:menuitem value="Locar" icon="ui-icon-disk" />
+			<p:submenu label="Cadastro e Buscas">
+				<p:menuitem value="Locação" action="#{menu.locacaoMB}" icon="ui-icon-disk" />
 			</p:submenu>
 			<p:submenu label="Administração">
 				<p:menuitem value="Usuário" icon="ui-icon-disk" />
