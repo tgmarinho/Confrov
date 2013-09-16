@@ -1,6 +1,6 @@
 package br.edu.pos.confrov.controller;
 
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +14,11 @@ import org.primefaces.event.RowEditEvent;
 import br.edu.pos.confrov.entity.Estado;
 import br.edu.pos.confrov.service.IEstadoService;
 import br.edu.pos.confrov.service.impl.EstadoServiceImpl;
+import br.edu.pos.confrov.utils.AbstractEntity;
 
 
 @ManagedBean(name="estadoMB")
-public class EstadoMB implements Serializable{
+public class EstadoMB extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
 	private Estado Estado;

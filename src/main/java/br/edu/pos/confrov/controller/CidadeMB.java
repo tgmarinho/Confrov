@@ -16,9 +16,10 @@ import br.edu.pos.confrov.service.IEstadoService;
 import br.edu.pos.confrov.service.ICidadeService;
 import br.edu.pos.confrov.service.impl.CidadeServiceImpl;
 import br.edu.pos.confrov.service.impl.EstadoServiceImpl;
+import br.edu.pos.confrov.utils.AbstractEntity;
 
 @ManagedBean(name="cidadeMB")
-public class CidadeMB {
+public class CidadeMB extends AbstractEntity  {
 	private static final long serialVersionUID = 1L;
 
 	private Cidade cidade;
@@ -37,10 +38,6 @@ public class CidadeMB {
 		setCidade(new Cidade());
 	}
 
-	private void buscaEstados() {
-		setListaEstados(estadoService.findByAll());
-		
-	}
 
 	private void buscaCidades() {
 		setListaCidades(cidadeService.findByAll());

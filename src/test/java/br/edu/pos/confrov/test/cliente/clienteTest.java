@@ -13,40 +13,39 @@ import br.edu.pos.confrov.service.impl.CidadeServiceImpl;
 import br.edu.pos.confrov.service.impl.ClienteServiceImpl;
 
 public class clienteTest {
-	IClienteService ClienteService= new ClienteServiceImpl();
+	IClienteService clienteService= new ClienteServiceImpl();
 	ICidadeService cidadeService= new CidadeServiceImpl();
-	Cliente Cliente= new Cliente();
+	Cliente cliente= new Cliente();
 
-	/*@Test
+	@Test
 	public void cadastraClienteTest() {
 
-		Cliente cliente = new Cliente();
-		Cliente.setNome("Quézia" );
-		Cliente.setBairro("Bairo sei lá");
-		Cliente.setCep(789456L);
-		Cliente.setCpf(56565L);
-		Cliente.setDtnascimento("20/08/1987");
-		Cliente.setEmail("ola@um.com");
-		Cliente.setFone(525232L);
-		Cliente.setEndereco("rua fulano de tal");
-		Cliente.setCidade(cidadeService.findByNome("Goiania"));
+		cliente.setNome("Quézia" );
+		cliente.setBairro("Bairo sei lá");
+		cliente.setCep(789456L);
+		cliente.setCpf(56565L);
+		cliente.setDtnascimento("20/08/1987");
+		cliente.setEmail("ola@um.com");
+		cliente.setFone(525232L);
+		cliente.setEndereco("rua fulano de tal");
+		cliente.setCidade(cidadeService.findByNome("Goiania"));
 
-		Cliente ClienteSalva = ClienteService.criaCliente(Cliente);
-		assertEquals("Goiania", ClienteSalva.getNome());
+		Cliente clienteSalva = clienteService.criaCliente(cliente);
+		assertEquals("Goiania", clienteSalva.getNome());
 
-	}*/
+	}
 
 
 
 	@Test	
 	public void buscaTodasClientes(){ 
 
-		List<Cliente> Clientes = ClienteService.findByAll();
+		List<Cliente> clientes = clienteService.findByAll();
 
-		for (Cliente Cliente : Clientes) {
-			System.out.println(Cliente.getNome()+ '\n'+Cliente.getEndereco()+'\n'+ Cliente.getBairro()
-					+'\n'+ Cliente.getCep() +'\n'+ Cliente.getCpf() +'\n'+ Cliente.getEmail() 
-					+'\n'+ Cliente.getFone() +'\n'+ Cliente.getCidade());
+		for (Cliente cliente : clientes) {
+			System.out.println(cliente.getNome()+ '\n'+cliente.getEndereco()+'\n'+ cliente.getBairro()
+					+'\n'+ cliente.getCep() +'\n'+ cliente.getCpf() +'\n'+ cliente.getEmail() 
+					+'\n'+ cliente.getFone() +'\n'+ cliente.getCidade());
 
 		}
 

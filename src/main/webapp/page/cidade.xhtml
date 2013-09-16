@@ -33,7 +33,7 @@
 
 			<h:form id="formListagemCidade">
 			<p:panel header="Listagem de Cidade" style="width:80%; margin: 5% 10%;">
-				<p:dataTable id="tbCidade" value="#{cidadeMB.listaCidae}"
+				<p:dataTable id="tbCidade" value="#{cidadeMB.listaCidades}"
 					var="c" border="1" cellspacing="0" editable="true">
 					
 					<p:ajax event="rowEdit" listener="#{cidadeMB.onEdit}" update=":formCidadeGeral:messages" />  
@@ -68,7 +68,7 @@
 								</f:facet>
 								<f:facet name="input">
 									<h:selectOneMenu value="#{c.estado}" converter="entityConverter">
-										<f:selectItems value="#{estadoMB.listaEstado}" var="marca"
+										<f:selectItems value="#{estadoMB.listaEstado}" var="estado"
 											itemLabel="#{estado}" itemValue="#{estado}" />
 									</h:selectOneMenu>
 								</f:facet>
