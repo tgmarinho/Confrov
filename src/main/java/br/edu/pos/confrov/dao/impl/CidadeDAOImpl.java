@@ -3,9 +3,11 @@ package br.edu.pos.confrov.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import br.edu.pos.confrov.dao.ICidadeDAO;
 import br.edu.pos.confrov.entity.Cidade;
+import br.edu.pos.confrov.entity.Estado;
 import br.edu.pos.confrov.persistence.Dba;
 
 public class CidadeDAOImpl implements ICidadeDAO {
@@ -53,6 +55,27 @@ public class CidadeDAOImpl implements ICidadeDAO {
 		} finally{
 			dba.closeEm();
 		}
+	}
+
+	@Override
+	public Cidade editaCidade(Cidade cidade) {
+		// TODO Auto-generated method stub
+		Dba dba = new Dba();
+		try{
+			EntityTransaction tx =  dba.getActiveEm().getTransaction();
+			if(!tx.isActive()){
+				tx.begin();
+			}
+			dba.getActiveEm().merge(cidade);
+			tx.commit();
+			return dba.getActiveEm().find(Cidade.class, cidade.getId());
+			
+		} catch (Exception e ){
+			e.printStackTrace();
+		} finally {
+			dba.getActiveEm().close();
+		}
+		return cidade;  
 	}
 
 }

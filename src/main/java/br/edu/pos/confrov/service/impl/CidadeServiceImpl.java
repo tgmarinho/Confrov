@@ -5,6 +5,7 @@ import java.util.List;
 import br.edu.pos.confrov.dao.ICidadeDAO;
 import br.edu.pos.confrov.dao.impl.CidadeDAOImpl;
 import br.edu.pos.confrov.entity.Cidade;
+import br.edu.pos.confrov.entity.Estado;
 import br.edu.pos.confrov.persistence.Dba;
 import br.edu.pos.confrov.service.ICidadeService;
 
@@ -65,6 +66,9 @@ public class CidadeServiceImpl implements ICidadeService{
 		}
 		return cidades;
 	}
-
+	@Override
+	public Cidade editaCidade(Cidade cidade) {
+		return cidade = cidadeDAO.editaCidade(cidade);
+	}
 
 }

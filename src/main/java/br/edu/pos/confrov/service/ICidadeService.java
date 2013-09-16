@@ -15,4 +15,6 @@ public interface ICidadeService  extends Serializable{
 		
 	List<Cidade> findbyEstado(Long estado);
 
+	public Cidade editaCidade(Cidade cidade);
+
 }

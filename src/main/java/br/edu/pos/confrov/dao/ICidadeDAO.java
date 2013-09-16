@@ -16,6 +16,8 @@ public interface ICidadeDAO extends Serializable {
 	
 	public List<Cidade> findByAll();
 
+	public Cidade editaCidade(Cidade cidade);
+
 
 
 }
