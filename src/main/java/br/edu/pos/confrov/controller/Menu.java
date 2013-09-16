@@ -21,6 +21,11 @@ public class Menu {
 		return "modelo";
 	}
 	
+	public String veiculoMB(){
+		System.out.println("veiculoMB");
+		return "veiculo";
+	}
+	
 	public String estadoMB(){
 		System.out.println("estadoMB");
 		return "estado";

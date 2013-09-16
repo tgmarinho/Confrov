@@ -1,6 +1,5 @@
 package br.edu.pos.confrov.controller;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +10,13 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.RowEditEvent;
 
-import br.edu.pos.confrov.entity.Categoria;
 import br.edu.pos.confrov.entity.Marca;
 import br.edu.pos.confrov.service.IMarcaService;
 import br.edu.pos.confrov.service.impl.MarcaServiceImpl;
+import br.edu.pos.confrov.utils.AbstractEntity;
 
 @ManagedBean(name="marcaMB")
-public class MarcaMB implements Serializable {
+public class MarcaMB extends AbstractEntity {
 
 	//	private static final Logger log = Logger.getLogger(MarcaMB.class);
 

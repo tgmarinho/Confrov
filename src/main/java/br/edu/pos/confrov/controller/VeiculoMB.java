@@ -45,7 +45,7 @@ public class VeiculoMB extends AbstractEntity {
 
 
 	private void buscaVeiculos() {
-//		veiculoService.findByAll();
+		setListaVeiculos(veiculoService.findByAll());
 		
 	}
 

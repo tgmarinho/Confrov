@@ -1,5 +1,7 @@
 package br.edu.pos.confrov.service.impl;
 
+import java.util.List;
+
 import br.edu.pos.confrov.dao.IVeiculoDAO;
 import br.edu.pos.confrov.dao.impl.VeiculoDAOImpl;
 import br.edu.pos.confrov.entity.Veiculo;
@@ -36,6 +38,24 @@ public class VeiculoServiceImpl implements IVeiculoService {
 			dba.closeEm();
 		}
 		return veiculo;
+	}
+	
+	@Override
+	public List<Veiculo> findByAll() {
+		Dba dba = new Dba();
+		List<Veiculo> veiculos;
+		try {
+			veiculos = veiculoDAO.findByAll();
+		} finally {
+			dba.closeEm();
+		}
+
+		return veiculos;
+	}
+
+
+	public Veiculo editaVeiculo(Veiculo veiculo) {
+		return veiculo = veiculoDAO.editaVeiculo(veiculo);
 	}
 
 }
