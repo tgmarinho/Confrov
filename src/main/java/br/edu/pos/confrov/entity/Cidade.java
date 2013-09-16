@@ -1,6 +1,5 @@
 package br.edu.pos.confrov.entity;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +15,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import br.edu.pos.confrov.utils.AbstractEntity;
+
 @Entity
 @SequenceGenerator(name = "seq_cidade", sequenceName = "seq_cidade", initialValue = 1, allocationSize = 1)
 @Table(name = "tb_cidade", uniqueConstraints = @UniqueConstraint(columnNames = "ci_nome"))
@@ -24,7 +25,7 @@ import javax.persistence.UniqueConstraint;
 		@NamedQuery(name = "Cidade.findByNome", query = "SELECT c FROM Cidade c WHERE c.nome = :nome"),
 		@NamedQuery(name = "Cidade.findByEstado", query = "SELECT c FROM Cidade c WHERE c.estado.id = :estado"),
 		@NamedQuery(name = "Cidade.findById", query = "SELECT c FROM Cidade c WHERE c.id = :id") })
-public class Cidade implements Serializable{
+public class Cidade extends AbstractEntity{
 	
 	private static final long serialVersionUID = 1L;
 	

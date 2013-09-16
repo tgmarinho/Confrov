@@ -6,11 +6,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import br.edu.pos.confrov.dao.IClienteDAO;
-import br.edu.pos.confrov.entity.Cidade;
 import br.edu.pos.confrov.entity.Cliente;
 import br.edu.pos.confrov.persistence.Dba;
 
 public class ClienteDAOImpl implements IClienteDAO {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public Cliente criaCliente(Cliente cliente, Dba dba) {
