@@ -7,7 +7,6 @@ import javax.persistence.EntityTransaction;
 
 import br.edu.pos.confrov.dao.IEstadoDAO;
 import br.edu.pos.confrov.entity.Estado;
-import br.edu.pos.confrov.entity.Estado;
 import br.edu.pos.confrov.persistence.Dba;
 
 public class EstadoDAOImpl implements IEstadoDAO {

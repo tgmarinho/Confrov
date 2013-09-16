@@ -1,6 +1,6 @@
 package br.edu.pos.confrov.entity;
 
-import java.io.Serializable;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,10 +14,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.xml.crypto.Data;
-
-import org.hibernate.annotations.common.util.impl.Log;
+import br.edu.pos.confrov.utils.AbstractEntity;
 
 @Entity
 @SequenceGenerator(name = "seq_cliente", sequenceName = "seq_cliente", initialValue = 1, allocationSize = 1)
@@ -27,7 +24,7 @@ import org.hibernate.annotations.common.util.impl.Log;
 		@NamedQuery(name = "Cliente.findByNome", query = "SELECT c FROM Cliente c WHERE c.nome = :nome"),
 		@NamedQuery(name = "Cliente.findByCPF", query = "SELECT c FROM Cliente c WHERE c.cpf = :cpf"),
 		@NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.id = :id") })
-public class Cliente implements Serializable {
+public class Cliente extends AbstractEntity{
 
 	/**
 	 * 
