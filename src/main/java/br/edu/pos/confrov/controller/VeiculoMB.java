@@ -72,7 +72,7 @@ public class VeiculoMB extends AbstractEntity {
 		FacesMessage msg = new FacesMessage("Veiculo Editado", ((Veiculo) event.getObject()).getModelo().getDescricao());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 
-		modeloService.editaModelo((Modelo) event.getObject());
+		veiculoService.editaVeiculo((Veiculo) event.getObject());
 		buscaModelos();
 	}
 

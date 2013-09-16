@@ -12,5 +12,7 @@ public interface IVeiculoService extends Serializable{
 	public Veiculo findById(Long id);
 
 	public List<Veiculo> findByAll();
+
+	public Veiculo editaVeiculo(Veiculo veiculo);
 	
 }

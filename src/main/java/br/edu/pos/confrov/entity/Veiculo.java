@@ -1,6 +1,5 @@
 package br.edu.pos.confrov.entity;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -18,13 +17,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import br.edu.pos.confrov.utils.AbstractEntity;
+
 @Entity
 @SequenceGenerator(name="seq_veiculo", sequenceName="seq_veiculo", initialValue=1, allocationSize=1)
 @Table(name="tb_veiculo")
 @NamedQueries({
     @NamedQuery(name = "Veiculo.findAll", query = "SELECT v FROM Veiculo v"),
     @NamedQuery(name = "Veiculo.findById", query = "SELECT v FROM Veiculo v WHERE v.id = :id")})
-public class Veiculo implements Serializable {
+public class Veiculo extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 

@@ -8,7 +8,7 @@ import br.edu.pos.confrov.persistence.Dba;
 
 public interface IVeiculoDAO extends Serializable {
 
-	public Veiculo criaModelo(Veiculo veiculo, Dba dba);
+	public Veiculo criaVeiculo(Veiculo veiculo, Dba dba);
 
 	public Veiculo findById(Long id);
 

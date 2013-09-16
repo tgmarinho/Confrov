@@ -32,14 +32,14 @@
 						<h:outputText value="Valor de Locação: " />
 						<p:inputText value="#{veiculoMB.veiculo.valorLocacao}" maxlength="30" />
 						
-						<h:outputText value="Marca: " />
-						<h:selectOneMenu value="#{modeloMB.modelo.marca}" converter="entityConverter">
-							<f:selectItems value="#{marcaMB.listaMarcas}" var="marca"
-								itemLabel="#{marca}" itemValue="#{marca}" />
+						<h:outputText value="Modelo: "/>
+						<h:selectOneMenu value="#{veiculoMB.veiculo.modelo}" converter="entityConverter">
+							<f:selectItems value="#{modeloMB.listaModelos}" var="modelo"
+								itemLabel="#{modelo}" itemValue="#{modelo}" />
 						</h:selectOneMenu>
-
+						
 						<p:commandButton value="Limpar" type="reset" />
-						<p:commandButton value="Salvar" action="#{modeloMB.salvar}" update=":formVeiculoGeral:formListagemVeiculo"  />
+						<p:commandButton value="Salvar" action="#{veiculoMB.salvar}" update=":formVeiculoGeral:formListagemVeiculo"  />
 
 					</h:panelGrid>
 				</p:panel>
@@ -81,13 +81,27 @@
 									<h:outputText value="#{m.anoFabricacao}" />
 								</f:facet>
 								<f:facet name="input">
-									<h:selectOneMenu value="#{m.modelo.marca}" converter="entityConverter">
-										<f:selectItems value="#{marcaMB.listaMarcas}" var="marca"
-											itemLabel="#{marca}" itemValue="#{marca}" />
-									</h:selectOneMenu>
+									<h:inputText value="#{m.anoFabricacao}" />
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
+						
+						<p:column headerText="Modelo" style="width:24%">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{m.modelo}" />
+								</f:facet>
+								<f:facet name="input">
+									<h:selectOneMenu value="#{m.modelo}" converter="entityConverter">
+										<f:selectItems value="#{modeloMB.listaModelos}" var="mode"
+											itemLabel="#{mode}" itemValue="#{mode}" />
+									</h:selectOneMenu>
+								</f:facet>								
+
+							</p:cellEditor>
+						</p:column>
+
+
 
 
 						<p:column headerText="Editar" style="width:6%">

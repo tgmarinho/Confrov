@@ -20,7 +20,7 @@ public class VeiculoServiceImpl implements IVeiculoService {
 		Dba dba = new Dba();
 		try{
 			// createUser 'adopts' the transaction
-			veiculo = veiculoDAO.criaModelo(veiculo, dba);
+			veiculo = veiculoDAO.criaVeiculo(veiculo, dba);
 		} finally {
 			// 100% sure that the transaction and entity manager will be closed
 			dba.closeEm();

@@ -14,7 +14,7 @@ public class VeiculoDAOImpl implements IVeiculoDAO {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
-	public Veiculo criaModelo(Veiculo veiculo, Dba dba) {
+	public Veiculo criaVeiculo(Veiculo veiculo, Dba dba) {
 
 		EntityManager em = dba.getActiveEm();  
 
