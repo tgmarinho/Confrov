@@ -78,10 +78,10 @@
 						<p:column headerText="Ano de Fabricacao" style="width:24%">
 							<p:cellEditor>
 								<f:facet name="output">
-									<h:outputText value="#{m.marca.descricao}" />
+									<h:outputText value="#{m.anoFabricacao}" />
 								</f:facet>
 								<f:facet name="input">
-									<h:selectOneMenu value="#{m.marca}" converter="entityConverter">
+									<h:selectOneMenu value="#{m.modelo.marca}" converter="entityConverter">
 										<f:selectItems value="#{marcaMB.listaMarcas}" var="marca"
 											itemLabel="#{marca}" itemValue="#{marca}" />
 									</h:selectOneMenu>
