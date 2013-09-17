@@ -12,7 +12,6 @@ import org.primefaces.event.RowEditEvent;
 
 import br.edu.pos.confrov.entity.Cliente;
 import br.edu.pos.confrov.entity.Locacao;
-import br.edu.pos.confrov.entity.Modelo;
 import br.edu.pos.confrov.entity.Veiculo;
 import br.edu.pos.confrov.service.IClienteService;
 import br.edu.pos.confrov.service.ILocacaoService;

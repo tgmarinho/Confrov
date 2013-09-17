@@ -132,6 +132,11 @@ public class Veiculo extends AbstractEntity {
 			return false;
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return id + " " + modelo.getDescricao();
+	}
 
 	
 }

@@ -5,8 +5,6 @@ import javax.persistence.Persistence;
 
 import org.junit.Test;
 
-import br.edu.pos.confrov.entity.Marca;
-
 
 public class EntityManagerTest {
 
@@ -15,14 +13,12 @@ public class EntityManagerTest {
 	
 
 	@Test
-	public void test() {
+	public void criaTabelasTest() {
 		factory = Persistence.createEntityManagerFactory ("confrovpu") ;
 		manager1 = factory.createEntityManager () ;
 		
-		System.out.println ( " ------------------ PRIMEIRO FIND - - - - - - - - - - - - - - - - - " ) ;
-		Marca marca = manager1.find(Marca.class, 1L);
+		System.out.println ( " ------------------ Cria as Tabelas- - - - - - - - - - - - - - - - - " ) ;
 		
-//		Assert.assertEquals(1L, marca.getId().longValue());
 		
 	}
 
