@@ -20,12 +20,12 @@
 						<p:inputText value="#{cidadeMB.cidade.nome}" maxlength="30" />
 						<h:outputText value="Estado: " />
 						<h:selectOneMenu value="#{cidadeMB.cidade.estado}" converter="entityConverter">
-							<f:selectItems value="#{estadoMB.listaEstado}" var="marca"
+							<f:selectItems value="#{estadoMB.listaEstado}" var="estado"
 								itemLabel="#{estado}" itemValue="#{estado}" />
 						</h:selectOneMenu>
 
 						<p:commandButton value="Limpar" type="reset" />
-						<p:commandButton value="Salvar" action="#{estadoMB.salvar}" update=":formCidadeGeral:formListagemCidade"  />
+						<p:commandButton value="Salvar" action="#{cidadeMB.salvar}" update=":formCidadeGeral:formListagemCidade"  />
 
 					</h:panelGrid>
 				</p:panel>

@@ -15,7 +15,7 @@ import br.edu.pos.confrov.utils.AbstractEntity;
 
 @Entity
 @SequenceGenerator(name = "seq_estado", sequenceName = "seq_estado", initialValue = 1, allocationSize = 1)
-@Table(name = "tb_Estado", uniqueConstraints = @UniqueConstraint(columnNames = "es_nome"))
+@Table(name = "tb_estado", uniqueConstraints=@UniqueConstraint(columnNames="es_nome"))
 @NamedQueries({
 		@NamedQuery(name = "Estado.findAll", query = "SELECT e FROM Estado e"),
 		@NamedQuery(name = "Estado.findByDescricao", query = "SELECT e FROM Estado e WHERE e.nome = :nome"),
@@ -27,7 +27,7 @@ public class Estado extends AbstractEntity {
 	@GeneratedValue(generator = "seq_estado", strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "es_nome", unique = true, nullable = false)
+	@Column(name = "es_nome")
 	private String nome;
 	
 	@Column(name = "es_sigla")

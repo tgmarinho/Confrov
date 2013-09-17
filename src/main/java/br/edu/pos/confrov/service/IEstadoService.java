@@ -15,7 +15,7 @@ public interface IEstadoService extends Serializable{
 
 	public List<Estado> findByAll();
 	
-	public Estado findById(int Id);
+	public Estado findById(Long Id);
 	
 	public Estado editaEstado(Estado Estado);
 

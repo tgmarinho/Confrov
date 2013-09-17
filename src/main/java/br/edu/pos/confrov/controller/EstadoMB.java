@@ -21,41 +21,41 @@ import br.edu.pos.confrov.utils.AbstractEntity;
 public class EstadoMB extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
-	private Estado Estado;
+	private Estado estado;
 	private List<Estado> listaEstado;
 
-	IEstadoService EstadoService = new EstadoServiceImpl();
+	IEstadoService estadoService = new EstadoServiceImpl();
 
 	@PostConstruct
 	public void init(){
 		setListaEstado(new ArrayList<Estado>());
 		buscaEstados();
-		Estado = new Estado();
+		setEstado(new Estado());
 	}
 
 	private void buscaEstados() {
-		setListaEstado(EstadoService.findByAll());
+		setListaEstado(estadoService.findByAll());
 	}
 
 	public String salvar(){
 
-		Estado EstadoPeristida = EstadoService.findByDescricao(Estado.getNome());
-		if(EstadoPeristida == null){
-			Estado = EstadoService.criaEstado(Estado);
+		//Estado estadoPeristida = estadoService.findByDescricao(getEstado().getNome());
+		//if(estadoPeristida == null){
+			setEstado(estadoService.criaEstado(getEstado()));
 			buscaEstados();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Estado Salva","" )); 
-		}else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Ops! Estado", "Já existe uma Estado com esse Nome: "+Estado.getNome()));  
-		}
+	//	else {
+		//	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Ops! Estado", "Já existe uma Estado com esse Nome: "+getEstado().getNome()));  
+		//}
 
 		return "";
 	}
 
 	public void onEdit(RowEditEvent event) {
-		FacesMessage msg = new FacesMessage("Estado Edited", ((Estado) event.getObject()).getNome());
+		FacesMessage msg = new FacesMessage("Estado Editedo", ((Estado) event.getObject()).getNome());
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 		
-		EstadoService.editaEstado((Estado) event.getObject());
+		estadoService.editaEstado((Estado) event.getObject());
 		buscaEstados();
 	}
 
@@ -74,12 +74,12 @@ public class EstadoMB extends AbstractEntity {
 
 
 	public Estado getEstado() {
-		return Estado;
+		return estado;
 	}
 
 
 	public void setEstado(Estado Estado) {
-		this.Estado = Estado;
+		this.estado = Estado;
 	}
 
 	public List<Estado> getListaEstado() {

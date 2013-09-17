@@ -29,7 +29,7 @@ public class CidadeTest {
 		assertEquals("Goiania", cidadeSalva.getNome());
 
 	}
-
+*/	
 
 
 	@Test	
@@ -44,9 +44,9 @@ public class CidadeTest {
 
 
 
-	}*/	
+	}
 
-	@Test	
+	/*@Test	
 	public void buscaPorEstado(){ 
 
 
@@ -58,6 +58,6 @@ public class CidadeTest {
 
 
 
-	}	
+	}*/		
 
 }

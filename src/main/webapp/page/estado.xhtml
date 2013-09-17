@@ -12,14 +12,14 @@
 
 			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 
-			<h:form id="formEstadoCategoria">
+			<h:form id="formCadastroEstado">
 
 				<p:panel header="Novo Estado" style="width:80%; margin: 5% 10%;">
-					<h:panelGrid columns="5" cellpadding="10">
+					<h:panelGrid columns="6" cellpadding="10">
 						<h:outputText value="Nome: " />
-						<p:inputText value="#{estadoMB.estado.nome}" maxlength="100" />
+						<p:inputText value="#{estadoMB.estado.nome}" />
 						<h:outputText value="Sigla: " />
-						<p:inputText value="#{estadoMB.estado.sigla}" maxlength="3" />
+						<p:inputText value="#{estadoMB.estado.sigla}" style="width:35px;"/>
 						<p:commandButton value="Limpar" type="reset" />
 						<p:commandButton value="Salvar" action="#{estadoMB.salvar}" update=":formEstadoGeral:formListagemEstado" />
 

@@ -34,7 +34,7 @@ public class EstadoDAOImpl implements IEstadoDAO {
 	}
 	
 	@Override
-	public Estado editaEstado (Estado Estado) {
+	public Estado editaEstado (Estado estado) {
 
 		Dba dba = new Dba();
 		try{
@@ -42,16 +42,16 @@ public class EstadoDAOImpl implements IEstadoDAO {
 			if(!tx.isActive()){
 				tx.begin();
 			}
-			dba.getActiveEm().merge(Estado);
+			dba.getActiveEm().merge(estado);
 			tx.commit();
-			return dba.getActiveEm().find(Estado.class, Estado.getId());
+			return dba.getActiveEm().find(Estado.class, estado.getId());
 			
 		} catch (Exception e ){
 			e.printStackTrace();
 		} finally {
 			dba.getActiveEm().close();
 		}
-		return Estado;  
+		return estado;  
 	}
 
 
@@ -67,7 +67,10 @@ public class EstadoDAOImpl implements IEstadoDAO {
 		}
 	}
 	
-	public Estado findById (int Id){
+
+
+	@Override
+	public Estado findById(Long Id) {
 		Dba dba = new Dba(true);
 		try{
 			return (Estado) dba.getActiveEm().createNamedQuery("Estado.findById").setParameter("Id", Id).getSingleResult();

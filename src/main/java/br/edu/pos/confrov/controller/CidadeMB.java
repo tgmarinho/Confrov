@@ -45,14 +45,14 @@ public class CidadeMB extends AbstractEntity  {
 
 	public String salvar(){
 
-		Cidade CidadePeristida = cidadeService.findByNome(getCidade().getNome());
-		if(CidadePeristida == null){
+		//Cidade CidadePeristida = cidadeService.findByNome(getCidade().getNome());
+		//if(CidadePeristida == null){
 			setCidade(cidadeService.criaCidade(getCidade()));
 			buscaCidades();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Cidade Salva","" )); 
-		}else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Ops! Cidade", "Já existe uma Cidade com essa Descricão: "+getCidade().getNome()));  
-		}
+	//	}else {
+		//	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Ops! Cidade", "Já existe uma Cidade com essa Descricão: "+getCidade().getNome()));  
+	//	}
 
 		return "";
 	}
@@ -72,6 +72,7 @@ public class CidadeMB extends AbstractEntity  {
 	}
 	
 	public void onExcluir(RowEditEvent event) {
+		
 		FacesMessage msg = new FacesMessage("Cidade excluída", ((Cidade) event.getObject()).getNome());
 		System.out.println("teste excluir");
 
