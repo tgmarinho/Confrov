@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,6 +22,7 @@ import br.edu.pos.confrov.utils.AbstractEntity;
 
 @Entity
 @SequenceGenerator(name = "seq_locacao", sequenceName = "seq_locacao", initialValue = 1, allocationSize = 1)
+@Table(name="tb_locacao")
 @NamedQueries({
 	@NamedQuery(name = "Locacao.findAll", query = "SELECT l FROM Locacao l"),
 	@NamedQuery(name = "Locacao.findByPeriodo", query = "SELECT l FROM Locacao l WHERE l.dataDevolucao >= :dataInicial and l.dataDevolucao <= :dataFinal"),

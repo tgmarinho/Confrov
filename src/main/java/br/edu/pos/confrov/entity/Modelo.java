@@ -69,7 +69,7 @@ public class Modelo extends AbstractEntity {
 
 	@Override
 	public String toString() {
-		return descricao;
+		return descricao + " - " + marca.getDescricao();
 	}
 
 	@Override

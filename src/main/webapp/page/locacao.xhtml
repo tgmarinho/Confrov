@@ -18,10 +18,10 @@
 					<h:panelGrid columns="5" cellpadding="6">
 						
 						<h:outputText value="Data de Retirada: " />
-						<p:inputMask mask="99/99/9999" value="#{locacaoMB.locacao.dataRetirada}" />
+						<p:inputMask mask="99/99/9999" id="dataRetirada" label="Data de Retirada" required="true" value="#{locacaoMB.locacao.dataRetirada}" />
 						
 						<h:outputText value="Data de Devolução: " />
-						<p:inputMask mask="99/99/9999" value="#{locacaoMB.locacao.dataDevolucao}" />
+						<p:inputMask mask="99/99/9999"  id="dataDevolucao" label="Data de Devolução" required="true" value="#{locacaoMB.locacao.dataDevolucao}" />
 						
 						<!-- Esperando cliente ficar pronto  
 						<h:outputText value="Cliente: "/>

@@ -57,8 +57,8 @@ public class VeiculoMB extends AbstractEntity {
 	public String salvar(){
 
 		try {
-			setVeiculo(veiculoService.criaVeiculo(veiculo));
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Veiculo Salvo","" )); 
+				setVeiculo(veiculoService.criaVeiculo(veiculo));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Veiculo Salvo","" )); 
 		} catch (Exception e) {
 			e.printStackTrace();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Veiculo não salvo","" )); 
@@ -67,6 +67,7 @@ public class VeiculoMB extends AbstractEntity {
 		buscaVeiculos();
 		return "";
 	}
+
 
 	public void onEdit(RowEditEvent event) {
 		FacesMessage msg = new FacesMessage("Veiculo Editado", ((Veiculo) event.getObject()).getModelo().getDescricao());
