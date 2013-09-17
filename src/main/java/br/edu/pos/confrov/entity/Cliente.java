@@ -20,7 +20,7 @@ import br.edu.pos.confrov.utils.AbstractEntity;
 @SequenceGenerator(name = "seq_cliente", sequenceName = "seq_cliente", initialValue = 1, allocationSize = 1)
 @Table(name = "tb_cliente")
 @NamedQueries({
-		@NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cidade c"),
+		@NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
 		@NamedQuery(name = "Cliente.findByNome", query = "SELECT c FROM Cliente c WHERE c.nome = :nome"),
 		@NamedQuery(name = "Cliente.findByCPF", query = "SELECT c FROM Cliente c WHERE c.cpf = :cpf"),
 		@NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.id = :id") })

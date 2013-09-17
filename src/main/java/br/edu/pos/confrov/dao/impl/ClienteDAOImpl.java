@@ -36,6 +36,7 @@ public class ClienteDAOImpl implements IClienteDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Cliente> findbyCPF(Long cpf) {
 		Dba dba = new Dba(true);
@@ -47,6 +48,7 @@ public class ClienteDAOImpl implements IClienteDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Cliente> findByAll() {
 		Dba dba = new Dba(true);
