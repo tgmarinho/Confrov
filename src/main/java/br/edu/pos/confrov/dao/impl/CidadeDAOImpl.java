@@ -77,4 +77,24 @@ public class CidadeDAOImpl implements ICidadeDAO {
 		return cidade;  
 	}
 
+	@Override
+	public Cidade findById(Long id) {
+		Dba dba = new Dba(true);
+
+		try{
+			return (Cidade) dba.getActiveEm().createNamedQuery("Cidade.findById").setParameter("id", id).getSingleResult();
+		} finally{
+			dba.closeEm();
+		}
+	}
+
+	@Override
+	public Cidade Remove(Cidade cidade, Dba dba) {
+		EntityManager em = dba.getActiveEm();  
+
+		em.remove(cidade);  
+
+		return cidade;  
+	}
+
 }

@@ -25,6 +25,7 @@ import br.edu.pos.confrov.utils.AbstractEntity;
 		@NamedQuery(name = "Cidade.findByNome", query = "SELECT c FROM Cidade c WHERE c.nome = :nome"),
 		@NamedQuery(name = "Cidade.findByEstado", query = "SELECT c FROM Cidade c WHERE c.estado.id = :estado"),
 		@NamedQuery(name = "Cidade.findById", query = "SELECT c FROM Cidade c WHERE c.id = :id") })
+
 public class Cidade extends AbstractEntity{
 	
 	private static final long serialVersionUID = 1L;

@@ -73,10 +73,15 @@ public class CidadeMB extends AbstractEntity  {
 	
 	public void onExcluir(RowEditEvent event) {
 		
-		FacesMessage msg = new FacesMessage("Cidade excluída", ((Cidade) event.getObject()).getNome());
-		System.out.println("teste excluir");
-
-		FacesContext.getCurrentInstance().addMessage(null, msg);
+		   ICidadeService cidadeService = new CidadeServiceImpl();
+	        Cidade retorno = cidadeService.Remove(getCidade());
+	        FacesContext mensagem = FacesContext.getCurrentInstance();
+	        if(retorno.equals("sucesso")){
+	            mensagem.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Removido com sucesso", null));
+	        buscaCidades();    
+	        } else {
+	            mensagem.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Falha ao remover", null));
+	        }
 	}
 
 	public Cidade getCidade() {

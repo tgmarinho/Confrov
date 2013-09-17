@@ -39,4 +39,9 @@ public class Menu {
 		System.out.println("cidadeMB");
 		return "cidade";
 	}
+	
+	public String clienteMB(){
+		System.out.println("clienteMB");
+		return "cliente";
+	}
 }

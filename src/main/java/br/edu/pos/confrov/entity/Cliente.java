@@ -35,7 +35,7 @@ public class Cliente extends AbstractEntity{
 	@GeneratedValue(generator = "seq_cliente", strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "cli_nome", unique = true, nullable = false)
+	@Column(name = "cli_nome")
 	private String nome;
 	
 	@Column(name = "cli_cpf")

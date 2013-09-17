@@ -71,4 +71,30 @@ public class CidadeServiceImpl implements ICidadeService{
 		return cidade = cidadeDAO.editaCidade(cidade);
 	}
 
+
+	@Override
+	public Cidade findById(Long id) {
+		Dba dba = new Dba();
+		Cidade	 cidade;
+		try{
+			cidade = cidadeDAO.findById(id);
+		} finally {
+			dba.closeEm();
+		}
+		return cidade;
+	}
+
+	@Override
+	public Cidade Remove(Cidade cidade) {
+	   Dba dba = new Dba();
+		try{
+			// createUser 'adopts' the transaction
+			cidade = cidadeDAO.Remove(cidade, dba);
+		} finally {
+			// 100% sure that the transaction and entity manager will be closed
+			dba.closeEm();
+		}
+		return cidade;
+	}
+
 }

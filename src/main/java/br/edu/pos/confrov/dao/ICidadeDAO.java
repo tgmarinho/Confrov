@@ -18,6 +18,10 @@ public interface ICidadeDAO extends Serializable {
 
 	public Cidade editaCidade(Cidade cidade);
 
+	public Cidade findById(Long id);
+	
+	public Cidade Remove(Cidade cidade, Dba dba);
+
 
 
 }
