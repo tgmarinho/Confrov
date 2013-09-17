@@ -55,6 +55,7 @@ public class LocacaoMB extends AbstractEntity {
 
 		try {
 			setLocacao(locacaoService.criaLocacao(locacao));
+			System.out.println("teste locacao salvar");
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Locacção Salvo","" )); 
 		} catch (Exception e) {
 			e.printStackTrace();
