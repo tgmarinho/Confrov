@@ -54,9 +54,12 @@ public class LocacaoMB extends AbstractEntity {
 	public String salvar(){
 
 		try {
+			
+			if(regrasNegocios()){
 			setLocacao(locacaoService.criaLocacao(locacao));
 			System.out.println("teste locacao salvar");
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Locacção Salvo","" )); 
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Locação não salvo","" )); 
@@ -66,6 +69,28 @@ public class LocacaoMB extends AbstractEntity {
 		
 		return "";
 	}
+
+	/**
+	 * Não deu para colocar na service por questões de tempo.... regra de negocio implementada aq no MB mesmo =/
+	 * @return
+	 */
+	private boolean regrasNegocios() {
+		
+		if(validaDatasLocacao()) {
+			
+		}
+		
+		return true;
+		
+		
+	}
+
+
+	private boolean validaDatasLocacao() {
+//		locacaoService.buscaVeiculoLocadoNaData();
+		return false;
+	}
+
 
 	public void onEdit(RowEditEvent event) {
 		FacesMessage msg = new FacesMessage("Locação Editado", ((Locacao) event.getObject()).getId().toString());

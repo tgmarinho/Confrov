@@ -15,23 +15,18 @@
 			<h:form id="formLocacaoVeiculo">
 				
 				<p:panel header="Nova Locação" style="width:80%; margin: 5% 10%;">
-					<h:panelGrid columns="5" cellpadding="6">
+					<h:panelGrid columns="4" cellpadding="6">
 						
 						<h:outputText value="Data de Retirada: " />
-						<p:inputMask mask="99/99/9999" id="dataRetirada" label="Data de Retirada" required="true" value="#{locacaoMB.locacao.dataRetirada}" />
+						<h:inputText id="dataRetirada" label="Data de Retirada" required="true" value="#{locacaoMB.locacao.dataRetirada}" >
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:inputText>
 						
 						<h:outputText value="Data de Devolução: " />
-						<p:inputMask mask="99/99/9999"  id="dataDevolucao" label="Data de Devolução" required="true" value="#{locacaoMB.locacao.dataDevolucao}" />
+						<h:inputText  id="dataDevolucao" label="Data de Devolução" required="true" value="#{locacaoMB.locacao.dataDevolucao}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:inputText>
 						
-						<!-- Esperando cliente ficar pronto  
-						<h:outputText value="Cliente: "/>
-						<h:selectOneMenu value="#{clienteMB.veiculo.modelo}" converter="entityConverter">
-							<f:selectItems value="#{modeloMB.listaModelos}" var="modelo"
-								itemLabel="#{modelo}" itemValue="#{modelo}" />
-						</h:selectOneMenu>
-						-->
-						
-						<!-- O certo aqui era buscar a lista de veiculos desse cliente -->						
 						<h:outputText value="Veiculo "/>
 						<h:selectOneMenu value="#{locacaoMB.locacao.veiculo}" converter="entityConverter">
 							<f:selectItems value="#{veiculoMB.listaVeiculos}" var="vei"
@@ -70,7 +65,9 @@
 									<h:outputText value="#{m.dataRetirada}" />
 								</f:facet>
 								<f:facet name="input">
-									<p:inputMask value="#{m.dataRetirada}" mask="99/99/9999" style="width:100%" />
+									<h:inputText value="#{m.dataRetirada}"  style="width:100%" >
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:inputText>
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
@@ -81,38 +78,35 @@
 									<h:outputText value="#{m.dataDevolucao}" />
 								</f:facet>
 								<f:facet name="input">
-									<p:inputMask value="#{m.dataDevolucao}" mask="99/99/9999" style="width:100%" />
+									<h:inputText value="#{m.dataDevolucao}" style="width:100%" >
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:inputText>
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						<!--   aguardando a classe cliente ficar pronta
-						<p:column headerText="Cliente" style="width:24%">
+						
+						<p:column>
 							<p:cellEditor>
 								<f:facet name="output">
-									<h:outputText value="#{m.cliente.nome}" />
+									<h:outputText value="#{m.veiculo}" />
 								</f:facet>
 								<f:facet name="input">
-									<h:selectOneMenu value="#{m.cliente}" converter="entityConverter">
-										<f:selectItems value="#{modeloMB.listaModelos}" var="mode"
-											itemLabel="#{mode}" itemValue="#{mode}" />
+									<h:selectOneMenu value="#{locacaoMB.locacao.veiculo}"
+										converter="entityConverter">
+										<f:selectItems value="#{veiculoMB.listaVeiculos}" var="vei"
+											itemLabel="#{vei}" itemValue="#{vei}" />
 									</h:selectOneMenu>
-								</f:facet>								
-
+								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						-->	
-						
 
 						<p:column headerText="Editar" style="width:6%">
 							<p:rowEditor />
 						</p:column>
 
 						<p:column headerText="Excluir" style="width:30%">
-									<p:commandLink  style="width:100%" action="#{locacaoMB.onExcluir}" value="Excluir" >
-									
-									 </p:commandLink> 
+							<p:commandLink  style="width:100%" action="#{locacaoMB.onExcluir}" value="Excluir" />
 						</p:column>
-
 
 					</p:dataTable>
 			</p:panel>
